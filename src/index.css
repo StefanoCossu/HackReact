@@ -1,3 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,100;1,300&family=Sedgwick+Ave+Display&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  --primary: black;
+  --secondary: blue;
+  --acc: yellow;
+}
+
+:root {
+  font-family: "Roboto", sans-serif;
+}
+.font-title {
+  font-family: "Sedgwick Ave Display", cursive;
+}
