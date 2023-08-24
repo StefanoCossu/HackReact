@@ -17,5 +17,5 @@ export default function ThemeSwitcher() {
     }
   };
 
-  return <span onClick={changeTheme}>{isDark ? <Light /> : <Dark />}</span>;
+  return <span className="cursor-pointer" onClick={changeTheme}>{isDark ? <Light /> : <Dark />}</span>;
 }

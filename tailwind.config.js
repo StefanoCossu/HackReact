@@ -4,6 +4,19 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      animation: {
+        flash:"flash 1s ease infinite both"
+      },
+      keyframes:{
+        flash:{
+          "0%":{
+            boxShadow:"0 0 12px 0 white"
+          },
+          "100%":{
+            boxShadow: "none"
+          }
+        }
+      },
       colors: {
         primary: "var(--primary)",
         secondary: "var(--secondary)",

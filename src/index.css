@@ -5,11 +5,10 @@
 @tailwind utilities;
 
 html {
-  --primary: black;
-  --secondary: blue;
-  --acc: yellow;
+  --primary: #0000ff;
+  --secondary: cyan;
+  --acc: rgb(108, 128, 150);
 }
-
 :root {
   font-family: "Roboto", sans-serif;
 }
