@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [data, setData] = useState(null)
   useEffect(()=>{
-    fetch(`${import.meta.env.VITE_RAWG_API_URL}?dates=2023-07-24,2023-08-24&ordering=-added&key=${import.meta.env.VITE_RAWG_API_KEY}`)
+    fetch(`${import.meta.env.VITE_RAWG_API_URL}/games?dates=2023-07-24,2023-08-24&ordering=-added&key=${import.meta.env.VITE_RAWG_API_KEY}`)
     .then((r) => r.json()).then((r) => setData(r.results))
   },[])
   return (

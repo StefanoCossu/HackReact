@@ -5,7 +5,7 @@ import About from "./Pages/About";
 import Error from "./Pages/Error";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-import Search from "./Pages/Search";
+import Search, { getGenres } from "./Pages/Search";
 
 export const router = createBrowserRouter([
   {
@@ -30,8 +30,9 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/search",
+        path: "/search/:genre?/:num?",
         element: <Search />,
+        loader: getGenres
       },
     ],
   },
