@@ -6,6 +6,10 @@ import Error from "./Pages/Error";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Search, { getGenres } from "./Pages/Search";
+import Profile from "./Pages/Profile";
+import ProtectedRoute from "./Components/ProtectedRoot";
+import SearchTwo, { loadAll } from "./Pages/Searchtwo";
+
 
 export const router = createBrowserRouter([
   {
@@ -30,9 +34,18 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
       {
+        path: "/profile",
+        element: <ProtectedRoute element={<Profile />} />,
+      },
+      {
         path: "/search/:genre?/:num?",
         element: <Search />,
         loader: getGenres
+      },
+      {
+        path: "/searchtwo",
+        element: <SearchTwo />,
+        loader: loadAll,
       },
     ],
   },

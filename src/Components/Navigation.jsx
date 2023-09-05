@@ -1,12 +1,44 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { ReactComponent as Hamburger } from "../assets/icons/hamburger.svg";
 import { ReactComponent as User } from "../assets/icons/user.svg";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { useAuth } from "../Contexts/AuthProvider";
+import { supabase } from "../Supabase/client";
 
 export default function Navigation() {
   const [open,setOpen]= useState(false)
+  const {user} = useAuth()
+  const {signOut} = useAuth()
+  const [profile, setProfile] = useState(null)
+  const logOut = () => signOut()
+  // console.log(user);
+  
+  useEffect(()=>{
+    const getUserInfo = async () => {
+      try {
+        let { data, error } = await supabase.from("profiles")
+        .select()
+        .eq('id', user.id)
+        .single();
 
+          if (error) throw error;
+
+          setProfile(()=> data)
+        
+      }catch (error) {
+        console.log(error);
+      }
+    }
+    if (user) {
+      getUserInfo()
+    }else{
+      setProfile(null)
+    }
+    
+  },[user])
+  
+  
   return (
     <nav>
     <div className="fixed z-30 flex h-12 w-screen items-center bg-gradient-to-r from-[#14496c] from-20% via-[#14496cb3] via-90% to-[#14496cb3] px-2 after:absolute after:bottom-[-1px] after:left-[77px] after:h-[1px] after:w-full after:bg-cyan-400 after:content-['']">
@@ -16,15 +48,27 @@ export default function Navigation() {
         ></div>
         <div className="text-white flex justify-between md:w-1/2 w-2/3 font-title">
           <Link to="/" className="font-bold tracking-widest font-title">Gamers&apos; Home</Link>
-          <Link to="/search" className="hidden md:inline font-title">Search</Link>
+          {/* <Link to="/search" className="hidden md:inline font-title">Search</Link> */}
+          <Link to="/searchtwo" className="hidden md:inline font-title">Search</Link>
           <Link to="/" className="hidden md:inline font-title">Home</Link>
-          <Link to="/" className="hidden md:inline font-title">Home</Link>
+          {profile &&
+          <Link to="/profile" className="hidden md:inline font-title">{profile && profile.username}</Link>
+          }
+          {!profile &&
+          <Link to="/register" className="hidden md:inline font-title">Registrati</Link>
+          }
         </div>
         <div className="flex items-center justify-end w-1/2 text-white">
-          <ThemeSwitcher />
+         
+          {profile ?
+          <button onClick={logOut}>Logout</button>
+          :
           <Link to="/login" className="ml-3 mr-4">
             <User />
           </Link>
+          } 
+           <ThemeSwitcher />
+          
             <button className="ml-4 md:hidden" onClick={()=> setOpen(!open)}>
              <Hamburger />
             </button>

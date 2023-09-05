@@ -31,25 +31,13 @@ export default function Search(){
 const triggerSearch = () => {
     setLoading(true);
     setGames(null);
-    fetch(`${import.meta.env.VITE_RAWG_API_URL}/games?&key=${import.meta.env.VITE_RAWG_API_KEY}&page_size=12&search=${searched}&search_precise=true`)
+    fetch(`${import.meta.env.VITE_RAWG_API_URL}/games?&key=${import.meta.env.VITE_RAWG_API_KEY}&page_size=12&search=${searched}&search_precise=true&ordering=-rating`)
     .then((r)=>r.json())
     .then((r)=>{
         setGames(r);
         setLoading(false);
     })
 }
-    // useEffect(()=>{
-    //     if(searched.length > 4){
-    //         setLoading(true);
-    //         setGames(null);
-    //         fetch(`${import.meta.env.VITE_RAWG_API_URL}/games?&key=${import.meta.env.VITE_RAWG_API_KEY}&page_size=12&search=${searched}&search_precise=true`)
-    //         .then((r)=>r.json())
-    //         .then((r)=>{
-    //             setGames(r);
-    //             setLoading(false);
-    //         })
-    //     }
-    // },[searched])
     return <div className="px-6 min-h-screen flex">
         <div className="w-1/5 flex flex-col">
         <div className="mb-10">
