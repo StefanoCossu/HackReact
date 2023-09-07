@@ -2,6 +2,7 @@ import { useState } from "react";
 import { supabase } from "../Supabase/client"
 import Input from "../Components/Input";
 import { Link, useNavigate } from "react-router-dom";
+import useAuthStore from "../Store/authStore";
 
 export default function Register(){
 
@@ -21,6 +22,7 @@ export default function Register(){
     )
     const [message,setMessage] = useState("");
     const navigate = useNavigate()
+    const setLoggedIn = useAuthStore((state)=> state.setLoggedIn)
 
     const submit = async (e) => {
         e.preventDefault();
@@ -30,7 +32,8 @@ export default function Register(){
             if(error){
                 setMessage(error.message)
             }
-            if (data){
+            if (data.session !== null){
+                setLoggedIn(data.session)
                 navigate("/profile")
             }
         }catch (error){

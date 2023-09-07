@@ -1,44 +1,27 @@
-import { Link } from "react-router-dom";
-import {  useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import {  useState } from "react";
 import { ReactComponent as Hamburger } from "../assets/icons/hamburger.svg";
 import { ReactComponent as User } from "../assets/icons/user.svg";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { useAuth } from "../Contexts/AuthProvider";
 import { supabase } from "../Supabase/client";
+import useAuthStore from "../Store/authStore";
 
 export default function Navigation() {
+  const navigate = useNavigate()
   const [open,setOpen]= useState(false)
-  const {user} = useAuth()
-  const {signOut} = useAuth()
-  const [profile, setProfile] = useState(null)
-  const logOut = () => signOut()
-  // console.log(user);
-  
-  useEffect(()=>{
-    const getUserInfo = async () => {
-      try {
-        let { data, error } = await supabase.from("profiles")
-        .select()
-        .eq('id', user.id)
-        .single();
+  const signOut = useAuthStore((state) => state.setLoggedOut)
+  const profile = useAuthStore((state) => state.profile)
 
-          if (error) throw error;
-
-          setProfile(()=> data)
-        
-      }catch (error) {
-        console.log(error);
-      }
+  const logOut = () => async () => {
+    try{
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      signOut();
+      navigate("/");
+    }catch(error){
+      console.log(error);
     }
-    if (user) {
-      getUserInfo()
-    }else{
-      setProfile(null)
-    }
-    
-  },[user])
-  
-  
+  };
   return (
     <nav>
     <div className="fixed z-30 flex h-12 w-screen items-center bg-gradient-to-r from-[#14496c] from-20% via-[#14496cb3] via-90% to-[#14496cb3] px-2 after:absolute after:bottom-[-1px] after:left-[77px] after:h-[1px] after:w-full after:bg-cyan-400 after:content-['']">
@@ -61,7 +44,7 @@ export default function Navigation() {
         <div className="flex items-center justify-end w-1/2 text-white">
          
           {profile ?
-          <button onClick={logOut}>Logout</button>
+          <button onClick={logOut()}>Logout</button>
           :
           <Link to="/login" className="ml-3 mr-4">
             <User />
@@ -76,8 +59,13 @@ export default function Navigation() {
     </div>
     <div className={"bg-gray-300 dark:bg-sky-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-sm fixed right-0 z-20 h-screen p-4 overflow-y-auto transition-transform w-full pt-20 flex flex-col md:hidden " + ( open ? "" : "translate-x-full")}>
         <Link to="/" className="font-title py-10">Home</Link>
-        <Link to="/" className="font-title py-10">Home</Link>
-        <Link to="/" className="font-title py-10">Home</Link>
+        <Link to="/searchtwo" className="font-title py-10">Search</Link>
+        {profile &&
+          <Link to="/profile" className="font-title py-10">{profile && profile.username}</Link>
+          }
+          {!profile &&
+          <Link to="/register" className="font-title py-10">Registrati</Link>
+          }
     </div>
     </nav>
   );

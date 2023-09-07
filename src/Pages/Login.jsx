@@ -1,30 +1,33 @@
 import { useState } from "react"
 import Input from "../Components/Input";
 import { supabase } from "../Supabase/client";
-import { useAuth } from "../Contexts/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import useAuthStore from "../Store/authStore";
 
 export default function Login(){
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [message, setMessage] = useState("");
-const {login} = useAuth()
+    
+const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
 const navigate = useNavigate()
-    const submit = async (e) => {
+const submit = async (e) => {
         e.preventDefault();
         try{
-         const {data: {user,session},error} = await login(email,password)
+         const {data, error} = await supabase.auth.signInWithPassword({
+            email,
+            password,
+         });
          if(error){
-            setMessage(error.message)
+            throw error;
          }
-         if(user && session){
-            navigate("/profile")
+         if(data.session !== null){
+            setLoggedIn(data.session)
+            navigate("/")
          }
         }catch(error){
             console.log(error);
         }
-        const {data,error} = await supabase.auth.signInWithPassword({email,password});
-        console.log(data,error);
         return 
     }
     

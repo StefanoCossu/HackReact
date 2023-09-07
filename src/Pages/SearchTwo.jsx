@@ -4,6 +4,7 @@ import GenresList from "../Components/GenresList"
 import Card from "../Components/Card"
 import StoresList from "../Components/StoresList.jsx";
 
+
 export default function SearchTwo() {
   const { genres, stores } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,13 +15,9 @@ export default function SearchTwo() {
   const [searched, setSearched] = useState("");
 
   useEffect(() => {
-    /* const allParams = Object.fromEntries([...searchParams]); */
-    /* console.log(allParams); */
-
-    // console.log([...searchParams]);
 
     const qs = [...searchParams].map((el) => `&${el[0]}=${el[1]}`).join("");
-    // console.log(qs);
+
     fetch(
       `${import.meta.env.VITE_RAWG_API_URL}/games?&key=${
         import.meta.env.VITE_RAWG_API_KEY

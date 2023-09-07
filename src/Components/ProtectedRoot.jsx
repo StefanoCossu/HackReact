@@ -1,10 +1,10 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../Contexts/AuthProvider";
+import useAuthStore from "../Store/authStore";
 
 export default function ProtectedRoute({element}){
     const location = useLocation()
 
-    const {user} = useAuth()
+    const profile = useAuthStore((state) => state.profile)
 
-    return (user ?  (element) : (<Navigate to="/login" replace state={{path:location.pathname}} />))
+    return (profile ?  (element) : (<Navigate to="/" replace state={{path:location.pathname}} />))
 }
