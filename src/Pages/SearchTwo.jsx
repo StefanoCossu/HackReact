@@ -3,9 +3,12 @@ import { useLoaderData, useSearchParams } from "react-router-dom";
 import GenresList from "../Components/GenresList"
 import Card from "../Components/Card"
 import StoresList from "../Components/StoresList.jsx";
+import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 
 export default function SearchTwo() {
+  const {t} = useTranslation()
   const { genres, stores } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -72,6 +75,10 @@ export default function SearchTwo() {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>{t("search.meta.title")}</title>
+    </Helmet>
     <div className="flex min-h-screen px-6">
       <div className="flex w-1/5 flex-col">
         <div className="mb-12"></div>
@@ -116,6 +123,7 @@ export default function SearchTwo() {
         )}
       </div>
     </div>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
-import { ReactComponent as Light } from "../assets/icons/light.svg";
-import { ReactComponent as Dark } from "../assets/icons/dark.svg";
+import { ReactComponent as Light } from "../../assets/icons/light.svg";
+import { ReactComponent as Dark } from "../../assets/icons/dark.svg";
 import { useState } from "react";
 
 export default function ThemeSwitcher() {

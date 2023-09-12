@@ -2,11 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import {  useState } from "react";
 import { ReactComponent as Hamburger } from "../assets/icons/hamburger.svg";
 import { ReactComponent as User } from "../assets/icons/user.svg";
-import ThemeSwitcher from "./ThemeSwitcher";
+import ThemeSwitcher from "./Switchers/ThemeSwitcher";
 import { supabase } from "../Supabase/client";
 import useAuthStore from "../Store/authStore";
+import LanguageSwitcher from "./Switchers/LanguageSwitcher";
 
 export default function Navigation() {
+  
   const navigate = useNavigate()
   const [open,setOpen]= useState(false)
   const signOut = useAuthStore((state) => state.setLoggedOut)
@@ -43,14 +45,17 @@ export default function Navigation() {
         </div>
         <div className="flex items-center justify-end w-1/2 text-white">
          
-          {profile ?
-          <button onClick={logOut()}>Logout</button>
+         
+          <LanguageSwitcher />
+           <ThemeSwitcher />
+
+           {profile ?
+          <button className="me-5" onClick={logOut()}>Logout</button>
           :
           <Link to="/login" className="ml-3 mr-4">
             <User />
           </Link>
           } 
-           <ThemeSwitcher />
           
             <button className="ml-4 md:hidden" onClick={()=> setOpen(!open)}>
              <Hamburger />

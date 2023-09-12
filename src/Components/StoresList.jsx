@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 export default function StoresList({ stores, searchParams, setSearchParams }) {
+  const {t}=useTranslation();
     const handleChange = (id) => {
       const allParams = Object.fromEntries([...searchParams]);
   
@@ -9,7 +12,7 @@ export default function StoresList({ stores, searchParams, setSearchParams }) {
     };
     return (
       <>
-        <p className="mb-4 text-xl">Stores</p>
+        <p className="mb-4 text-xl">{t("search.stores")}</p>
         <div className="h-72 overflow-y-scroll">
           {stores.map((el) => (
             <p

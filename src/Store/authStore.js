@@ -19,7 +19,7 @@ const useAuthStore = create((set)=> ({
         .eq("id", session.user.id)
         .single();
 
-        console.log(data);
+        // console.log(data);
         if(data.banned_until) return;
         set((state) => ({
             ...state,

@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const {t} = useTranslation();
+  
   const [data, setData] = useState(null)
   useEffect(()=>{
     fetch(`${import.meta.env.VITE_RAWG_API_URL}/games?dates=2023-07-24,2023-08-24&ordering=-added&key=${import.meta.env.VITE_RAWG_API_KEY}`)
@@ -11,10 +14,10 @@ export default function Home() {
       <div className="gap-12 px-12 py-12 md:py-24 md:flex">
         <div className="w-full md:w-2/5">
           <h1 className="bg-gradient-to-r from-primary to-98% via-acc bg-clip-text text-4xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text:6xl font-title pb-12">
-            {import.meta.env.VITE_PROJECT_NAME}
+          {t("home.title")} {import.meta.env.VITE_PROJECT_NAME}
           </h1>
           <p className="bg-gradient-to-r from-primary to-98% via-acc bg-clip-text text-3xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text:5xl font-title">
-            Lorem, ipsum dolor lorem lorem loremlorem
+            {t("home.subtitle")}
           </p>
         </div>
       </div>

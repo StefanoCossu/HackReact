@@ -1,0 +1,27 @@
+{
+    "home":{
+        "title":"Welcome to",
+        "subtitle":"The players' home"
+    },
+    "login":{
+        "title": "Login Now!"
+    },
+    "footer":{
+        "about":"About us",
+        "stack":"Stack",
+        "contact":"Contact us",
+        "privacy":"Privacy"
+    },
+    "search":{
+        "meta":{
+            "title":"Reack Search Page"
+        },
+        "genres":"Genres",
+        "stores":"Stores"
+    },
+    "common":{
+        "login":"Login",
+        "register":"Register"
+
+    }
+}

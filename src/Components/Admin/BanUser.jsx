@@ -1,17 +1,31 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { supabase } from "../../Supabase/client";
 import useAuthStore from "../../Store/authStore";
 import { Toaster, toast } from "react-hot-toast";
 
-export default function BanUser({user, getData, banned, is_Admin}){
+export default function BanUser({user, getData, banned}){
     const [date, setDate] = useState("");
     const profile = useAuthStore((state) => state.profile)
     
-    const check = () => {
-        return (profile.id === user || !date || is_Admin)
-    }
+    const [isAdmin, setIsAdmin] = useState(false)
     
+    const get_claim = async (uid, claim) => {
+        const { data } = await supabase
+        .rpc('get_claim', {uid, claim});
+        setIsAdmin(data)
+        return 
+      }
 
+    useEffect(()=>{
+        get_claim(user, "claims_admin")
+        },[])
+
+    const checker =  () => {
+        return (profile.id === user || !date || isAdmin)
+      }  
+      
+      
+      
     const ban = async (action) => {
         const { data, error } = await supabase
         .from("profiles")
@@ -49,7 +63,7 @@ export default function BanUser({user, getData, banned, is_Admin}){
             (<>
             <input className="rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-blue-500 focus:ring-blue-300 dark:focus:ring-blue-500" type="date" 
             value={date} onChange={(e) => setDate(e.target.value)} />
-            <button className="rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white" disabled={check()} onClick={() => ban(true)}>
+            <button className="rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white" disabled={checker()} onClick={() => ban(true)}>
                 <svg xmlns="http://www.w3.org/200/svg"
                 width="16"
                 height="16"
@@ -63,7 +77,5 @@ export default function BanUser({user, getData, banned, is_Admin}){
         </div>
     </>
         
-    )
-
-    
+    )  
 }

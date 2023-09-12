@@ -4,20 +4,20 @@ import BanUser from "./BanUser"
 
 export default function Profiles(){
     const [data, setData] = useState()
-
     
     const getData = async () => {
         let {data, error} = await supabase.from("profiles").select().order("id",{ascending: true});
+        
         const headers = [
             "Id","Usename","Firstname","Lastname","Banned until",
         ];
         
-        const entries = data.map((el) => [
+        const entries =  data.map((el) => [
             el.id, 
             el.username, 
             el.first_name, 
             el.last_name, 
-            <BanUser key={el.id} user={el.id} banned={el.banned_until} getData={getData} is_Admin={el.admin} />,
+            <BanUser key={el.id} user={el.id} banned={el.banned_until} getData={getData} />,
     ])
     setData({
         headers,entries,

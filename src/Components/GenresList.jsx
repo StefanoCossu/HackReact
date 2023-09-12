@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom"
 
 // export default function GenresList({genres,genre}) {
@@ -8,6 +9,7 @@ import { Link } from "react-router-dom"
 //     })}
 
 export default function GenresList({ genres, searchParams, setSearchParams }) {
+  const {t} = useTranslation()
         const handleChange = (slug) => {
           const allParams = Object.fromEntries([...searchParams]);
       
@@ -18,7 +20,7 @@ export default function GenresList({ genres, searchParams, setSearchParams }) {
         };
         return (
           <>
-            <p className="mb-4 text-xl">Genres</p>
+            <p className="mb-4 text-xl">{t("search.genres")}</p>
             <div className="h-72 overflow-y-scroll">
               {genres.map((el) => (
                 <p

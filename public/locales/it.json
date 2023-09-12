@@ -1,0 +1,27 @@
+{
+    "home":{
+        "title":"Benvenuto su",
+        "subtitle":"La casa dei giocatori!"
+    },
+    "login":{
+        "title": "Loggati Ora!"
+    },
+    "footer":{
+        "about":"Chi siamo",
+        "stack":"Stack",
+        "contact":"Contattaci",
+        "privacy":"Privacy"
+    },
+    "search":{
+        "meta":{
+            "title":"Reack Pagina di Ricerca"
+        },
+        "genres":"Generi",
+        "stores":"Negozi"
+    },
+    "common":{
+        "login":"Loggati",
+        "register":"Registrati"
+
+    }
+}
