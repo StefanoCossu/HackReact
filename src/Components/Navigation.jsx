@@ -40,7 +40,7 @@ export default function Navigation() {
           <Link to="/profile" className="hidden md:inline font-title">{profile && profile.username}</Link>
           }
           {!profile &&
-          <Link to="/register" className="hidden md:inline font-title">Registrati</Link>
+          <Link to="/sign-in" className="hidden md:inline font-title">Registrati</Link>
           }
         </div>
         <div className="flex items-center justify-end w-1/2 text-white">

@@ -9,6 +9,7 @@ import Search, { getGenres } from "./Pages/Search";
 import Profile from "./Pages/Profile";
 import ProtectedRoute from "./Components/ProtectedRoot";
 import SearchTwo, { loadAll } from "./Pages/Searchtwo";
+import SignIn from "./Pages/SignIn";
 
 
 export const router = createBrowserRouter([
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
         path: "/search/:genre?/:num?",
         element: <Search />,
         loader: getGenres
+      },
+      {
+        path: "/sign-in",
+        element: <SignIn />,
       },
       {
         path: "/searchtwo",

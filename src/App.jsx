@@ -7,7 +7,7 @@ function App() {
   
   return <HelmetProvider>
     <Helmet>
-      <title>Titolo</title>
+      <title>Gamers&apos;Home</title>
     </Helmet>
     <RouterProvider router={router} />
   </HelmetProvider>;
