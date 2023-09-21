@@ -1,47 +1,76 @@
-import { useState } from "react"
-import Input from "../Components/Input";
-import { supabase } from "../Supabase/client";
+import Input from "../Components/UI/Input";
+import { supabase } from "../supabase/client";
 import { Link, useNavigate } from "react-router-dom";
 import useAuthStore from "../Store/authStore";
+import { Formik, Field, Form } from "formik";
+import * as Yup from "yup";
+import Button from "../Components/UI/Button";
 
-export default function Login(){
-    const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("");
-    const [message, setMessage] = useState("");
-    
-const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
-const navigate = useNavigate()
-const submit = async (e) => {
-        e.preventDefault();
-        try{
-         const {data, error} = await supabase.auth.signInWithPassword({
-            email,
-            password,
-         });
-         if(error){
-            throw error;
-         }
-         if(data.session !== null){
-            setLoggedIn(data.session)
-            navigate("/")
-         }
-        }catch(error){
-            console.log(error);
-        }
-        return 
+export default function Login() {
+  const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
+
+  const navigate = useNavigate();
+
+  const submit = async (values) => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+      });
+      console.log(data, error);
+      if (error) throw error;
+
+      if (data.session !== null) {
+        setLoggedIn(data.session);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
     }
-    
-    return <div className="lg:w-1/2 mx-auto mt-24 min-h-screen">
-        <p className="text-center text-white font-bold text-2xl">Login</p>
-        <form action="" onSubmit={submit}>
-       <Input type="email" field="email" content='Insert your email here' value={email} onChange={(e) => setEmail(e.target.value)}/>
+  };
 
-       <Input type="password" field="password" content='Insert your password here' value={password} onChange={(e) => setPassword(e.target.value)}/>
+  return (
+    <div className="min-h-screen pt-24">
+      <Formik
+        initialValues={{
+          password: "",
+          email: "",
+        }}
+        validationSchema={Yup.object({
+          password: Yup.string().min(3, "Must be 3 characters or more"),
+          email: Yup.string()
+            .email("Invalid email address")
+            .required("Required"),
+        })}
+        onSubmit={(values) => submit(values)}
+      >
+        <Form className="mx-auto flex w-4/5 flex-wrap rounded bg-slate-50 py-8 text-black shadow dark:bg-gray-900 md:w-1/3">
+          <div className="w-full text-center">
+            <h1 className="text-4xl font-bold text-black dark:text-white">
+              Login
+            </h1>
+          </div>
+          <div className="mb-8 w-full px-2">
+            <Field name="email" component={Input} label="Email" type="email" />
+          </div>
 
-        <button type="submit">Submit</button>
-        </form>
-        {message && <p>{message}</p>}
-        <p>Or <Link to="/register">Register</Link></p>
+          <div className="mb-8 w-full px-2">
+            <Field
+              name="password"
+              component={Input}
+              label="Password"
+              type="password"
+            />
+          </div>
+
+          <div className="w-full text-center">
+            <Button type="submit" label="Login now" />
+          </div>
+        </Form>
+      </Formik>
+      <Link to="/sign-in" className="mx-auto mt-12 block text-center text-xl">
+        Nuovo utente ?
+      </Link>
     </div>
+  );
 }
-    

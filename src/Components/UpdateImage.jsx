@@ -3,13 +3,15 @@ import { supabase } from "../Supabase/client"
 import getProfileImage from "../Utilities/getProfileImage"
 import useAuthStore from "../Store/authStore"
 
-export default function UpdateImage(){
- 
-    const profile = useAuthStore((state) => state.profile)
 
+export default function UpdateImage(){
+    const profile = useAuthStore((state) => state.profile)  
     const [preview,setPreview] = useState()
     const [uploading, setUploading] = useState(false)
     const [file, setFile] = useState();
+    // const[url, setUrl] = useState(getProfileImage(profile.avatar_url))
+
+    
 
       useEffect(()=>{
         if(!file){
@@ -33,16 +35,18 @@ export default function UpdateImage(){
         setUploading(() => true);
 
         const fileExt = file.name.split(".").pop()
-        const fileName = `${profile.id + Math.random()}.${fileExt}`
+        
+        const fileName = `${Date.now() + profile.id}.${fileExt}`
+        
 
-        const {error: uploadError} = await supabase.storage.from("avatars").upload(fileName, file);
+        const { error: uploadError} = await supabase.storage.from("avatars").upload(fileName, file);
         if (uploadError) {
             throw uploadError
         }
         const updated_at = new Date()
         const {error} = await supabase.from('profiles').upsert({
             id: profile.id,
-            updated_at,
+            updated_at: updated_at,
             avatar_url: fileName
         })
 
@@ -57,13 +61,18 @@ export default function UpdateImage(){
             setFile(() => null)
             setPreview(() => null)
         }
-
+        profile.avatar_url = fileName;
+   
         
-      }
-      
+}
     return (<div>
+        
         <div>
-            {profile && <img src={getProfileImage(profile.avatar_url)} className="md:w-1/6 mb-5"/>}
+            {profile && 
+            <img src={getProfileImage(profile.avatar_url)}  
+            className="md:w-1/6 mb-5"
+            />
+            }
         </div>
         <div>{preview && <img src={preview} className="md:w-1/6 mb-5"/>}
         </div>
@@ -74,8 +83,6 @@ export default function UpdateImage(){
             <label htmlFor="button" className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full cursor-pointer">Scegli immagine</label>
             <input type="file" className="hidden" id="button" accept="image/*" disabled={uploading} onChange={handleFile} /></>
              }
-      {/* <input type="file" accept="image/*" disabled={uploading} onChange={handleFile} />
-      <button type="submit">Load Image</button> */}
         </form>
 
 

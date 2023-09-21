@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../Supabase/client"
-import Input from "../Components/Input";
+import Input from "../Components/UI/Input";
 import { Link, useNavigate } from "react-router-dom";
 import useAuthStore from "../Store/authStore";
 

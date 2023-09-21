@@ -6,7 +6,7 @@ export default function Profiles(){
     const [data, setData] = useState()
     
     const getData = async () => {
-        let {data, error} = await supabase.from("profiles").select().order("id",{ascending: true});
+        let {data} = await supabase.from("profiles").select().order("id",{ascending: true});
         
         const headers = [
             "Id","Usename","Firstname","Lastname","Banned until",

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 
 import useAuthStore from "../Store/authStore";
 import { useNavigate } from "react-router-dom";
-import Input from "../Components/Input";
+import Input from "../Components/UI/Input";
 import { supabase } from "../Supabase/client";
 import { Toaster, toast } from "react-hot-toast";
 

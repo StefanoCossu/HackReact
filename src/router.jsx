@@ -10,6 +10,7 @@ import Profile from "./Pages/Profile";
 import ProtectedRoute from "./Components/ProtectedRoot";
 import SearchTwo, { loadAll } from "./Pages/Searchtwo";
 import SignIn from "./Pages/SignIn";
+import GameDetails, { getGameDetails } from "./Pages/GameDetail";
 
 
 export const router = createBrowserRouter([
@@ -51,6 +52,11 @@ export const router = createBrowserRouter([
         path: "/searchtwo",
         element: <SearchTwo />,
         loader: loadAll,
+      },
+      {
+        path: "/game/:id",
+        element: <GameDetails />,
+        loader: getGameDetails,
       },
     ],
   },

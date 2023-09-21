@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { supabase } from "../Supabase/client";
 
+
 const initialState = {
     session: null,
     profile: null,
