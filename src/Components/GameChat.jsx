@@ -54,7 +54,7 @@ export default function GameChat({ game }) {
   }, []);
 
   const addMessage = async () => {
-    if (message.length > 3) {
+    if (message.length >= 1 ) {
       await supabase
         .from("messages")
         .insert([{ text: message, game_id: game, profile_id: profile.id }]);

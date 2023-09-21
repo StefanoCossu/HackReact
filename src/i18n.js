@@ -4,7 +4,7 @@ import I18NextHttpBackend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
 const index = 
-import.meta.env.MODE === "development" ? "http://localhost:5173" : "";
+import.meta.env.MODE === "development" ? "http://localhost:5173" : "https://project-01-seven.vercel.app/";
 i18next.use(LanguageDetector).use(I18NextHttpBackend).use(initReactI18next).init({
     fallbackLng: "en",
     backend:{

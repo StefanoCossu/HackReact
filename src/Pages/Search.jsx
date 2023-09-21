@@ -1,108 +1,155 @@
-import { useEffect, useState } from "react"
-import { Link, useLoaderData, useParams } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import GenresList from "../Components/GenresList"
 import Card from "../Components/Card"
+import StoresList from "../Components/StoresList.jsx";
+import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
-export default function Search(){
 
-    const genres = useLoaderData()
-    const {genre} = useParams()
-    const {num = 1} = useParams()
+export default function SearchTwo() {
+  const {t} = useTranslation()
+  const { genres, stores } = useLoaderData();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-    const [games, setGames] = useState(null)
-    const [searched, setSearched] = useState("");
-    const [loading, setLoading] = useState(true);
+  const [num,setNum] = useState(1)
 
-    const page_size = 12
+  const [games, setGames] = useState(null);
+  const [searched, setSearched] = useState("");
 
-    useEffect(()=>{
-        setLoading(true);
-        setGames(null);
-        setSearched("");
-        fetch(`${import.meta.env.VITE_RAWG_API_URL}/games?&key=${import.meta.env.VITE_RAWG_API_KEY}&genres=${genre}&page=${num}&page_size=${page_size}&ordering=-rating`)
-        .then(r=>r.json())
-        .then(r=>{
-            setGames(r);
-            setLoading(false);
-        })
+  useEffect(() => {
 
-    },[genre,num])
+    const qs = [...searchParams].map((el) => `&${el[0]}=${el[1]}`).join("");
 
-const triggerSearch = () => {
-    setLoading(true);
-    setGames(null);
-    fetch(`${import.meta.env.VITE_RAWG_API_URL}/games?&key=${import.meta.env.VITE_RAWG_API_KEY}&page_size=12&search=${searched}&search_precise=true&ordering=-rating`)
-    .then((r)=>r.json())
-    .then((r)=>{
+    fetch(
+      `${import.meta.env.VITE_RAWG_API_URL}/games?&key=${
+        import.meta.env.VITE_RAWG_API_KEY
+      }&page_size=${page_size}&search_precise=true&ordering=-rating${qs}`,
+    )
+      .then((r) => r.json())
+      .then((r) => {
         setGames(r);
-        setLoading(false);
-    })
-}
-    return <div className="px-6 min-h-screen flex">
-        <div className="w-1/5 flex flex-col">
-        <div className="mb-10">
-            <input type="text" className="border-bottom border-b-2 border-acc bg-transparent text-slate-700 dark:text-white" placeholder="Search by name.." value={searched} onChange={(e)=> setSearched(e.target.value)}/>
-            <button onClick={triggerSearch} className="bg-transparent">Search</button>
-        </div>
-            <GenresList genres={genres} genre={genre} />
-        </div>
-        <div className="w-4/5">
+      });
+  }, [searchParams]);
+
+
+
+  const page_size = 12;
+
+  const handlePage = (order) => {
+    const allParams = Object.fromEntries([...searchParams]);
+    setNum(allParams.page)
+
+    if (order === "next") {
+      setSearchParams({
+        ...allParams,
+        page: allParams.page ? +allParams.page + 1 : 2,
+      })
+      setNum(num+1);
+    }else if (order === "end") {
+        setSearchParams({
+          ...allParams,
+          page: allParams.page = 833 ,
+        })
+        setNum(833);
+    }else if (order === "start") {
+        setSearchParams({
+          ...allParams,
+          page: allParams.page = 1 ,
+        })
+        setNum(1);
+    } else {
+      setSearchParams({
+        ...allParams,
+        page: allParams.page == 1 || !allParams.page ? 1 : +allParams.page - 1,
+      });
+      setNum(num-1)
+      
+    }
+    
+  };
+
+  const handleSearched = () => {
+    const allParams = Object.fromEntries([...searchParams]);
+    setSearchParams({ search: searched });
+  };
+
+  return (
+    <>
+    <Helmet>
+      <title>{t("search.meta.title")}</title>
+    </Helmet>
+    <div className="flex min-h-screen px-6">
+      <div className="flex w-1/5 flex-col">
+        <div className="mb-12"></div>
+        <input
+          type="search"
+          value={searched}
+          onChange={(e) => setSearched(e.target.value)}
+        />
+        <button onClick={handleSearched}>ok</button>
+        <GenresList
+          genres={genres}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+        <hr className="my-12" />
+        <StoresList
+          stores={stores}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+      </div>
+      <div className="w-4/5">
         {games && (
-                <>
-                <div className="grid grid-cols-4 grid-rows-3 gap-0">
-                    {games.results.map((game) =>{
-                        return <Card key={game.id} game={game}/>
-                    })}
-                </div>
-                <div className="w-full mb-12">
-                    {!searched && 
-                    <div className="flex justify-center">
-                        <div className="w-48 text center">
-                        {num != 1 && <Link to={`/search/${genre}/1`} className="text-slate-800 dark:text-white">
-                                Start
-                            </Link>}
-                        </div>
-                        
-                        <div className="w-48 text center">
-                            {num > 1 && <Link to={`/search/${genre}/${+num -1}`} className="text-slate-800 dark:text-white">
-                                Prev
-                            </Link>}
-                        </div>
-                        <div className="w-48 text center">{num}</div>
-                        <div className="w-48 text center">
-                            {
-                                !(num == 833) &&
-                                <Link to={`/search/${genre}/${+num +1}`} className="text-slate-800 dark:text-white">
-                                Next
-                            </Link>
-                            }       
-                        </div>
-                        <div className="w-48 text center">
-                        {
-                                !(num == 833) &&
-                                <Link to={`/search/${genre}/833`} className="text-slate-800 dark:text-white">
-                                End
-                            </Link>
-                        }   
-                        </div>
-                    </div>
-                    }
-                </div>
-                </>
-                )
-        }  
-        {
-            loading && (
-                <div className="flex h-full items-center justify-center">loader</div>
-            )
-        } 
-        </div>
-   
+          <>
+            <p>{games.count}</p>
+            <div className="flex flex-wrap">
+              {games.results.map((game) => (
+                <Card key={game.id} game={game} />
+              ))}
+            </div>
+
+            <div className="mb-12 flex w-full justify-center">
+            {num > 1 && <button onClick={() => handlePage("start")}>start</button>}
+            {num > 1 && <button onClick={() => handlePage("prev")}>prev</button>}
+              {/* <button onClick={() => handlePage("prev")}>prev</button> */}
+              <span>{searchParams.get("page")}</span>
+            { !(num == 833) &&  <button onClick={() => handlePage("next")}>next</button>}
+            { !(num == 833) &&  <button onClick={() => handlePage("end")}>end</button>}
+             
+            </div>
+          </>
+        )}
+      </div>
     </div>
+    </>
+  );
 }
 
-export const getGenres = async () =>{
-    return await fetch(`${import.meta.env.VITE_RAWG_API_URL}/genres?key=${import.meta.env.VITE_RAWG_API_KEY}`)
-    .then((r)=>r.json())
-    .then((r)=>r.results)
-}
+export const getGenres = async () => {
+  return await fetch(
+    `${import.meta.env.VITE_RAWG_API_URL}/genres?key=${
+      import.meta.env.VITE_RAWG_API_KEY
+    }`,
+  )
+    .then((r) => r.json())
+    .then((r) => r.results);
+};
+
+export const getStores = async () => {
+  return await fetch(
+    `${import.meta.env.VITE_RAWG_API_URL}/stores?key=${
+      import.meta.env.VITE_RAWG_API_KEY
+    }`,
+  )
+    .then((r) => r.json())
+    .then((r) => r.results);
+};
+
+export const loadAll = async () => {
+  const genres = await getGenres();
+  const stores = await getStores();
+
+  return { genres, stores };
+};

@@ -34,7 +34,7 @@ export default function Navigation() {
         <div className="text-white flex justify-between md:w-1/2 w-2/3 font-title">
           <Link to="/" className="font-bold tracking-widest font-title">Gamers&apos; Home</Link>
           {/* <Link to="/search" className="hidden md:inline font-title">Search</Link> */}
-          <Link to="/searchtwo" className="hidden md:inline font-title">Search</Link>
+          <Link to="/search" className="hidden md:inline font-title">Search</Link>
           <Link to="/" className="hidden md:inline font-title">Home</Link>
           {profile &&
           <Link to="/profile" className="hidden md:inline font-title">{profile && profile.username}</Link>
@@ -64,7 +64,7 @@ export default function Navigation() {
     </div>
     <div className={"bg-gray-300 dark:bg-sky-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-sm fixed right-0 z-20 h-screen p-4 overflow-y-auto transition-transform w-full pt-20 flex flex-col md:hidden " + ( open ? "" : "translate-x-full")}>
         <Link to="/" className="font-title py-10">Home</Link>
-        <Link to="/searchtwo" className="font-title py-10">Search</Link>
+        <Link to="/search" className="font-title py-10">Search</Link>
         {profile &&
           <Link to="/profile" className="font-title py-10">{profile && profile.username}</Link>
           }

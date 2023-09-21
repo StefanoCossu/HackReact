@@ -5,10 +5,9 @@ import About from "./pages/About";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Search, { getGenres } from "./pages/Search";
 import Profile from "./pages/Profile";
-import ProtectedRoute from "./components/ProtectedRoot";
-import SearchTwo, { loadAll } from "./pages/Searchtwo";
+import ProtectedRoute from "./Components/ProtectedRoot";
+import Search, { loadAll } from "./pages/Search";
 import SignIn from "./pages/SignIn";
 import GameDetails, { getGameDetails } from "./pages/GameDetail";
 
@@ -40,17 +39,12 @@ export const router = createBrowserRouter([
         element: <ProtectedRoute element={<Profile />} />,
       },
       {
-        path: "/search/:genre?/:num?",
-        element: <Search />,
-        loader: getGenres
-      },
-      {
         path: "/sign-in",
         element: <SignIn />,
       },
       {
-        path: "/searchtwo",
-        element: <SearchTwo />,
+        path: "/search",
+        element: <Search />,
         loader: loadAll,
       },
       {

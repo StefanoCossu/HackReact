@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nivo/core": "^0.83.0",
+    "@nivo/pie": "^0.83.0",
     "@supabase/supabase-js": "^2.33.1",
     "formik": "^2.4.4",
     "i18n": "^0.15.1",
