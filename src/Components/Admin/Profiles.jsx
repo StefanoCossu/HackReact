@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { supabase } from "../../Supabase/client"
+import { supabase } from "../../supabase/client"
 import BanUser from "./BanUser"
 
 export default function Profiles(){

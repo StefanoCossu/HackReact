@@ -1,10 +1,10 @@
-import Input from "../Components/UI/Input";
+import Input from "../Components/uI/Input";
 import { supabase } from "../supabase/client";
 import { Link, useNavigate } from "react-router-dom";
-import useAuthStore from "../Store/authStore";
+import useAuthStore from "../store/authStore";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import Button from "../Components/UI/Button";
+import Button from "../Components/uI/Button";
 
 export default function Login() {
   const setLoggedIn = useAuthStore((state) => state.setLoggedIn);

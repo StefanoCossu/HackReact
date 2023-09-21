@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { supabase } from "../Supabase/client"
-import Input from "../Components/UI/Input";
+import { supabase } from "../supabase/client"
+import Input from "../Components/uI/Input";
 import { Link, useNavigate } from "react-router-dom";
-import useAuthStore from "../Store/authStore";
+import useAuthStore from "../store/authStore";
 
 export default function Register(){
 

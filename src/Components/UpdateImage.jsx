@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
-import { supabase } from "../Supabase/client"
-import getProfileImage from "../Utilities/getProfileImage"
-import useAuthStore from "../Store/authStore"
+import { supabase } from "../supabase/client"
+import getProfileImage from "../utilities/getProfileImage"
+import useAuthStore from "../store/authStore"
 
 
 export default function UpdateImage(){
     const profile = useAuthStore((state) => state.profile)  
+    const setProfile = useAuthStore((state) => state.setProfile);
     const [preview,setPreview] = useState()
     const [uploading, setUploading] = useState(false)
     const [file, setFile] = useState();
-    // const[url, setUrl] = useState(getProfileImage(profile.avatar_url))
 
     
 
@@ -32,39 +32,47 @@ export default function UpdateImage(){
       }
       const submit = async (e) => {
         e.preventDefault();
-        setUploading(() => true);
-
-        const fileExt = file.name.split(".").pop()
-        
-        const fileName = `${Date.now() + profile.id}.${fileExt}`
-        
-
-        const { error: uploadError} = await supabase.storage.from("avatars").upload(fileName, file);
-        if (uploadError) {
-            throw uploadError
-        }
-        const updated_at = new Date()
-        const {error} = await supabase.from('profiles').upsert({
+    
+        try {
+          setUploading(true);
+    
+          if (!file) {
+            return;
+          }
+    
+          const fileExt = file.name.split(".").pop();
+          const fileName = `${profile.username}-${Math.random()}.${fileExt}`;
+          const filePath = `${fileName}`;
+    
+          let { data: uploadData, error: uploadError } = await supabase.storage
+            .from("avatars")
+            .upload(filePath, file);
+          console.log(uploadData);
+          if (uploadError) {
+            throw uploadError;
+          }
+    
+          const updates = {
             id: profile.id,
-            updated_at: updated_at,
-            avatar_url: fileName
-        })
-
-        const {errorUser} = await supabase.auth.updateUser({
-            id: profile.id,
-            updated_at,
-        })
-        if(error || errorUser){
-            alert("Errore nel caricamento immagine")
-        }else{
-            setUploading(() => false) 
-            setFile(() => null)
-            setPreview(() => null)
+            avatar_url: filePath,
+            updated_at: new Date(),
+          };
+    
+          let { data, error } = await supabase
+            .from("profiles")
+            .upsert(updates)
+            .select()
+            .single();
+    
+          setProfile(data);
+        } catch (error) {
+          alert(error.message);
+        } finally {
+          setUploading(false);
+          setFile(() => null);
+          setPreview(() => null);
         }
-        profile.avatar_url = fileName;
-   
-        
-}
+      };
     return (<div>
         
         <div>

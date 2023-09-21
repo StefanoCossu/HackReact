@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
-import useAuthStore from "../Store/authStore";
+import useAuthStore from "../store/authStore";
 import GameChat from "../Components/GameChat";
-import { supabase } from "../Supabase/client";
+import { supabase } from "../supabase/client";
 
 
 export default function GameDetails() {

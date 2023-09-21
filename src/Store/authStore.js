@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { supabase } from "../Supabase/client";
+import { supabase } from "../supabase/client";
 
 
 const initialState = {

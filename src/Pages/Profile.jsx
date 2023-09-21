@@ -1,6 +1,6 @@
 import ProfileAdmin from "../Components/ProfileAdmin";
 import ProfileUser from "../Components/ProfileUser";
-import useAuthStore from "../Store/authStore";
+import useAuthStore from "../store/authStore";
 
 export default function Profile() {
   const isAdmin = useAuthStore((state) => state.isAdmin);

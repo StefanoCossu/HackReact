@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import { LANGUAGES } from "../../Constants"
+import { LANGUAGES } from "../../constants"
 
 export default function LanguageSwitcher(){
    const {i18n} = useTranslation(); 

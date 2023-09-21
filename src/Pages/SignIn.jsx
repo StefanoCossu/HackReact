@@ -2,10 +2,10 @@
 import { Formik, Field, Form} from "formik";
 import * as Yup from "yup";
 
-import useAuthStore from "../Store/authStore";
+import useAuthStore from "../store/authStore";
 import { useNavigate } from "react-router-dom";
-import Input from "../Components/UI/Input";
-import { supabase } from "../Supabase/client";
+import Input from "../Components/uI/Input";
+import { supabase } from "../supabase/client";
 import { Toaster, toast } from "react-hot-toast";
 
 export default function SignIn() {

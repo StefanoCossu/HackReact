@@ -1,4 +1,4 @@
-import Profiles from "./Admin/Profiles";
+import Profiles from "./admin/Profiles";
 import UpdateImage from "./UpdateImage";
 export default function ProfileAdmin() {
     

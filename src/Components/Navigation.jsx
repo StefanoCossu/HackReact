@@ -2,10 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import {  useState } from "react";
 import { ReactComponent as Hamburger } from "../assets/icons/hamburger.svg";
 import { ReactComponent as User } from "../assets/icons/user.svg";
-import ThemeSwitcher from "./Switchers/ThemeSwitcher";
-import { supabase } from "../Supabase/client";
-import useAuthStore from "../Store/authStore";
-import LanguageSwitcher from "./Switchers/LanguageSwitcher";
+import ThemeSwitcher from "./switchers/ThemeSwitcher";
+import { supabase } from "../supabase/client";
+import useAuthStore from "../store/authStore";
+import LanguageSwitcher from "./switchers/LanguageSwitcher";
 
 export default function Navigation() {
   

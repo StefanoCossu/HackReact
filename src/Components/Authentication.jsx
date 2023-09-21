@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import useAuthStore from "../Store/authStore"
-import { supabase } from "../Supabase/client"
+import useAuthStore from "../store/authStore"
+import { supabase } from "../supabase/client"
 import { useEffect } from "react"
 
 export default function Authentication({children}){

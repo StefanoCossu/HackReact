@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LanguageSwitcher from "./Switchers/LanguageSwitcher";
+import LanguageSwitcher from "./switchers/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 
 

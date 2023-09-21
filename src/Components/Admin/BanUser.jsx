@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { supabase } from "../../Supabase/client";
-import useAuthStore from "../../Store/authStore";
+import { supabase } from "../../supabase/client";
+import useAuthStore from "../../store/authStore";
 import { Toaster, toast } from "react-hot-toast";
 
 export default function BanUser({user, getData, banned}){

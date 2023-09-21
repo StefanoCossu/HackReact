@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useAuthStore from "../Store/authStore";
+import useAuthStore from "../store/authStore";
 
 
 

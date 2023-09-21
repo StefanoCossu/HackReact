@@ -1,8 +1,8 @@
-import useAuthStore from "../Store/authStore";
+import useAuthStore from "../store/authStore";
 import { useEffect, useState } from "react";
-import getProfileImage from "../Utilities/getProfileImage";
-import Button from "./UI/Button";
-import { supabase } from "../Supabase/client";
+import getProfileImage from "../utilities/getProfileImage";
+import Button from "./uI/Button";
+import { supabase } from "../supabase/client";
 
 export default function GameChat({ game }) {
   const [messages, setMessages] = useState(null);
