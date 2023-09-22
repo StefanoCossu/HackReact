@@ -23,7 +23,7 @@ export default function Navigation() {
       if (error) throw error;
       signOut();
       navigate("/");
-      setWidth("100px")
+      
     }catch(error){
       console.log(error);
     }
@@ -50,14 +50,14 @@ export default function Navigation() {
         }
         ></div>
         <div className="text-white flex justify-between md:w-1/2 w-2/3 font-title">
-          <Link to="/" className="font-bold tracking-widest font-title" onClick={()=> setWidth("100px")}>Gamers&apos; Home</Link>
-          <Link to="/search" className="hidden md:inline font-title" onClick={()=> setWidth("30vw")}>Search</Link>
+          <Link to="/" className="font-bold tracking-widest font-title" >Gamers&apos; Home</Link>
+          <Link to="/search" className="hidden md:inline font-title" >Search</Link>
           {/* <Link to="/" className="hidden md:inline font-title">Home</Link> */}
           {profile &&
-          <Link to="/profile" className="hidden md:inline font-title" onClick={()=> setWidth("50vw")}>{profile && profile.username}</Link>
+          <Link to="/profile" className="hidden md:inline font-title">{profile && profile.username}</Link>
           }
           {!profile &&
-          <Link to="/sign-in" className="hidden md:inline font-title" onClick={()=> setWidth("50vw")}>Registrati</Link>
+          <Link to="/sign-in" className="hidden md:inline font-title">Registrati</Link>
           }
         </div>
         <div className="flex items-center justify-end w-1/2 text-white">
