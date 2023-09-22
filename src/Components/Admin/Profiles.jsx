@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../../supabase/client"
 import BanUser from "./BanUser"
+import Button from "../uI/Button"
 
 export default function Profiles(){
     const [data, setData] = useState()
-    
+    const [page, setPage] = useState(0)
+
     const getData = async () => {
-        let {data} = await supabase.from("profiles").select().order("id",{ascending: true});
+        let {data} = await supabase.from("profiles").select().range(10 * page, page * 10 + 10).order("id",{ascending: true});
         
         const headers = [
             "Id","Usename","Firstname","Lastname","Banned until",
@@ -25,7 +27,7 @@ export default function Profiles(){
     };
     useEffect(() => {
         getData()
-    },[])
+    },[page])
     return <div>
         {data ? (
         <div className="my-5 relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -54,5 +56,14 @@ export default function Profiles(){
                 </tbody>
             </table>
         </div>) : ("loading")}
+        <div className="flex justify-around mb-10">
+            <div>
+            {page > 0 && 
+            (<Button label={"prev"} onClick={() => setPage((prev) => prev - 1)} type={"button"}/>)}
+            </div>
+            <div>
+            <Button label={"next"} onClick={() => setPage((prev) => prev + 1)} type={"button"}/>
+            </div>
+        </div>
     </div>
 }

@@ -5,8 +5,11 @@ import useAuthStore from "../store/authStore";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import Button from "../Components/uI/Button";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
+  const {t} = useTranslation()
   const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
 
   const navigate = useNavigate();
@@ -30,6 +33,10 @@ export default function Login() {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>Login</title>
+    </Helmet>
     <div className="min-h-screen pt-24">
       <Formik
         initialValues={{
@@ -69,8 +76,9 @@ export default function Login() {
         </Form>
       </Formik>
       <Link to="/sign-in" className="mx-auto mt-12 block text-center text-xl">
-        Nuovo utente ?
+        Oppure Registrati
       </Link>
     </div>
+    </>
   );
 }

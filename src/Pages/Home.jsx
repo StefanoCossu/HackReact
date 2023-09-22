@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const {t} = useTranslation();
-  
   const [data, setData] = useState(null)
   useEffect(()=>{
     fetch(`${import.meta.env.VITE_RAWG_API_URL}/games?dates=2023-07-24,2023-08-24&ordering=-added&key=${import.meta.env.VITE_RAWG_API_KEY}`)
     .then((r) => r.json()).then((r) => setData(r.results))
   },[])
   return (
+    <>
+    <Helmet>
+      <title>Home</title>
+    </Helmet>
     <div className="min-h-screen">
       <div className="gap-12 px-12 py-12 md:py-24 md:flex">
         <div className="w-full md:w-2/5">
@@ -30,5 +34,6 @@ export default function Home() {
           })}
       </div>
     </div>
+    </>
   );
 }

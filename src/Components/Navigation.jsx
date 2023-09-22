@@ -33,7 +33,6 @@ export default function Navigation() {
         ></div>
         <div className="text-white flex justify-between md:w-1/2 w-2/3 font-title">
           <Link to="/" className="font-bold tracking-widest font-title">Gamers&apos; Home</Link>
-          {/* <Link to="/search" className="hidden md:inline font-title">Search</Link> */}
           <Link to="/search" className="hidden md:inline font-title">Search</Link>
           <Link to="/" className="hidden md:inline font-title">Home</Link>
           {profile &&
@@ -69,7 +68,7 @@ export default function Navigation() {
           <Link to="/profile" className="font-title py-10">{profile && profile.username}</Link>
           }
           {!profile &&
-          <Link to="/register" className="font-title py-10">Registrati</Link>
+          <Link to="/sign-in" className="font-title py-10">Registrati</Link>
           }
     </div>
     </nav>

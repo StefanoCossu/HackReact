@@ -2,9 +2,11 @@ import { useLoaderData } from "react-router-dom";
 import useAuthStore from "../store/authStore";
 import GameChat from "../Components/GameChat";
 import { supabase } from "../supabase/client";
-
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 export default function GameDetails() {
+  const {t} = useTranslation()
   const game = useLoaderData();
   const profile = useAuthStore((state) => state.profile);
   const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
@@ -33,6 +35,10 @@ export default function GameDetails() {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>Detail {game.name}</title>
+    </Helmet>
     <div
       className="min-h-screen px-12 py-24"
       style={{
@@ -73,6 +79,7 @@ export default function GameDetails() {
         <div className="w-1/2">{profile && <GameChat game={game.id} />}</div>
       </div>
     </div>
+    </>
   );
 }
 

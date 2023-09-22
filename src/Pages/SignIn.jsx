@@ -7,11 +7,14 @@ import { useNavigate } from "react-router-dom";
 import Input from "../Components/uI/Input";
 import { supabase } from "../supabase/client";
 import { Toaster, toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 export default function SignIn() {
+  const {t} = useTranslation()
+  
   const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
   const navigate = useNavigate();
-
   const submit = async ( values) => {
     const form = {
       email: values.email,
@@ -41,6 +44,9 @@ export default function SignIn() {
   
   return (
     <>
+    <Helmet>
+      <title>Sign In</title>
+    </Helmet>
     <Toaster /> 
     <Formik
       initialValues={{

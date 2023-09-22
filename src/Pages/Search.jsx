@@ -5,9 +5,15 @@ import Card from "../Components/Card"
 import StoresList from "../Components/StoresList.jsx";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
+import { ReactComponent as Next } from "../assets/icons/next.svg";
+import { ReactComponent as Prev } from "../assets/icons/prev.svg";
+import { ReactComponent as Init } from "../assets/icons/init.svg";
+import { ReactComponent as End } from "../assets/icons/end.svg";
+import Button from "../Components/uI/Button";
 
 
 export default function SearchTwo() {
+  
   const {t} = useTranslation()
   const { genres, stores } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -87,7 +93,10 @@ export default function SearchTwo() {
           value={searched}
           onChange={(e) => setSearched(e.target.value)}
         />
-        <button onClick={handleSearched}>ok</button>
+        <div className="flex justify-center mt-3">
+        <Button onClick={handleSearched} label={"Cerca"} type={"button"} />
+        </div>
+        
         <GenresList
           genres={genres}
           searchParams={searchParams}
@@ -103,21 +112,28 @@ export default function SearchTwo() {
       <div className="w-4/5">
         {games && (
           <>
-            <p>{games.count}</p>
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-4 grid-rows-3 gap-4">
               {games.results.map((game) => (
                 <Card key={game.id} game={game} />
               ))}
             </div>
 
-            <div className="mb-12 flex w-full justify-center">
-            {num > 1 && <button onClick={() => handlePage("start")}>start</button>}
-            {num > 1 && <button onClick={() => handlePage("prev")}>prev</button>}
-              {/* <button onClick={() => handlePage("prev")}>prev</button> */}
-              <span>{searchParams.get("page")}</span>
-            { !(num == 833) &&  <button onClick={() => handlePage("next")}>next</button>}
-            { !(num == 833) &&  <button onClick={() => handlePage("end")}>end</button>}
-             
+            <div className="mb-12 flex w-full justify-evenly">
+              <div>
+              {num > 1 && 
+              <Button onClick={() => handlePage("start")} label={<Init />} type={"button"}/>}
+              </div>
+              <div>
+              {num > 1 && <Button onClick={() => handlePage("prev")} label={<Prev />} type={"button"}/>}
+              </div>
+              <div className="">{searchParams.get("page")}</div>
+              <div>
+              { !(num == 833) &&  <Button onClick={() => handlePage("next")} label={<Next />} type={"button"}/>}
+              </div>
+              <div>
+              { !(num == 833) &&  <Button onClick={() => handlePage("end")} label={<End />} type={"button"}/>}
+              </div>
+              
             </div>
           </>
         )}
