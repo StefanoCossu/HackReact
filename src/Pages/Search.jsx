@@ -12,7 +12,7 @@ import { ReactComponent as End } from "../assets/icons/end.svg";
 import Button from "../Components/uI/Button";
 
 
-export default function SearchTwo() {
+export default function Search() {
   
   const {t} = useTranslation()
   const { genres, stores } = useLoaderData();

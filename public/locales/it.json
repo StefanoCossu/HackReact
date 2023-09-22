@@ -23,5 +23,15 @@
         "login":"Loggati",
         "register":"Registrati"
 
+    },
+    "profile":{
+        "meta":{
+            "title":"Profilo"
+        },
+        "title":"Benvenuto sul tuo profilo",
+        "welcomeBack":"Bentornato amministratore",
+        "games":"Giochi preferiti dagli utenti:",
+        "usersList":"Lista utenti:",
+        "welcomeUser":"Bentornato utente"
     }
 }

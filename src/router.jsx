@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./pages/Root";
-import Home from "./pages/Home";
+
 import About from "./pages/About";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
@@ -9,6 +9,7 @@ import ProtectedRoute from "./Components/ProtectedRoot";
 import Search, { loadAll } from "./pages/Search";
 import SignIn from "./pages/SignIn";
 import GameDetails, { getGameDetails } from "./pages/GameDetail";
+import Home from "./pages/Home";
 
 
 export const router = createBrowserRouter([

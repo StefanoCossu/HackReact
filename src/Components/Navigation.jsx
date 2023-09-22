@@ -6,13 +6,16 @@ import ThemeSwitcher from "./switchers/ThemeSwitcher";
 import { supabase } from "../supabase/client";
 import useAuthStore from "../store/authStore";
 import LanguageSwitcher from "./switchers/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 export default function Navigation() {
-  
+  const {t} = useTranslation()
+
   const navigate = useNavigate()
   const [open,setOpen]= useState(false)
   const signOut = useAuthStore((state) => state.setLoggedOut)
   const profile = useAuthStore((state) => state.profile)
+  const [widht, setWidth] = useState("100px")
 
   const logOut = () => async () => {
     try{
@@ -20,26 +23,28 @@ export default function Navigation() {
       if (error) throw error;
       signOut();
       navigate("/");
+      setWidth("100px")
     }catch(error){
       console.log(error);
     }
   };
+  
   return (
     <nav>
-    <div className="fixed z-30 flex h-12 w-screen items-center bg-gradient-to-r from-[#14496c] from-20% via-[#14496cb3] via-90% to-[#14496cb3] px-2 after:absolute after:bottom-[-1px] after:left-[77px] after:h-[1px] after:w-full after:bg-cyan-400 after:content-['']">
+    <div className="fixed z-30 flex h-12 w-screen items-center bg-gradient-to-r from-[#14496c] from-20% via-[#14496cb3] via-90% to-[#14496cb3] px-2 after:absolute after:bottom-[-1px] after:left-[77px] after:h-[1px] after:w-full  after:content-['']">
       <div className={
-        "after:border-r-6 after:animate-flash fixed left-0 top-[19px] z-[-1] h-[44px] w-[60px] border-b-2 border-cyan-400 bg-[#14496c] before:absolute before:bottom-[1px] before:right-[-8px] before:z-[0] before:h-[14px] before:w-[18px] before:skew-x-[-50deg] before:bg-[#11496c] before:content-[''] after:absolute after:bottom-[-2px] after:right-[-10px] after:h-[15px] after:w-[6px] after:skew-x-[-50deg] after:bg-white after:content-['']"
+        `after:border-r-6 after:animate-flash fixed left-0 top-[19px] z-[-1] h-[44px] w-[${widht}] border-b-2 border-t-0 border-cyan-400 bg-[#14496c] before:absolute before:bottom-[1px] before:right-[-8px] before:z-[0] before:h-[14px] before:w-[18px] before:skew-x-[-50deg] before:bg-[#11496c] before:content-[''] after:absolute after:bottom-[-2px] after:right-[-10px] after:h-[15px] after:w-[6px] after:skew-x-[-50deg] after:bg-white after:content-[''] transition-duration-2000ms` 
         }
         ></div>
         <div className="text-white flex justify-between md:w-1/2 w-2/3 font-title">
-          <Link to="/" className="font-bold tracking-widest font-title">Gamers&apos; Home</Link>
-          <Link to="/search" className="hidden md:inline font-title">Search</Link>
-          <Link to="/" className="hidden md:inline font-title">Home</Link>
+          <Link to="/" className="font-bold tracking-widest font-title" onClick={()=> setWidth("100px")}>Gamers&apos; Home</Link>
+          <Link to="/search" className="hidden md:inline font-title" onClick={()=> setWidth("30vw")}>Search</Link>
+          {/* <Link to="/" className="hidden md:inline font-title">Home</Link> */}
           {profile &&
-          <Link to="/profile" className="hidden md:inline font-title">{profile && profile.username}</Link>
+          <Link to="/profile" className="hidden md:inline font-title" onClick={()=> setWidth("50vw")}>{profile && profile.username}</Link>
           }
           {!profile &&
-          <Link to="/sign-in" className="hidden md:inline font-title">Registrati</Link>
+          <Link to="/sign-in" className="hidden md:inline font-title" onClick={()=> setWidth("50vw")}>Registrati</Link>
           }
         </div>
         <div className="flex items-center justify-end w-1/2 text-white">

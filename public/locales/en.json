@@ -14,7 +14,7 @@
     },
     "search":{
         "meta":{
-            "title":"Reack Search Page"
+            "title":"Search Page"
         },
         "genres":"Genres",
         "stores":"Stores"
@@ -23,5 +23,15 @@
         "login":"Login",
         "register":"Register"
 
+    },
+    "profile":{
+        "meta":{
+            "title":"Profile"
+        },
+        "title":"Welcome on your profile",
+        "welcomeBack":"Welcome back admin",
+        "games":"Prefered users' games:",
+        "usersList":"Users' list:",
+        "welcomeUser":"Welcome back user"
     }
 }
