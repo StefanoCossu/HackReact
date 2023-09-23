@@ -7,6 +7,8 @@ export default function About() {
   <Helmet>
       <title>Sign In</title>
     </Helmet>
+    <div className="pt-20 min-h-screen">
     <p>About Us</p>
+    </div>
   </>;
 }

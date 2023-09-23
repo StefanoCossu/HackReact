@@ -7,7 +7,10 @@ export default function Error() {
   <Helmet>
       <title>Error</title>
     </Helmet>
-  <p>Si è verificato un errore!</p>;
+    <div className="pt-20 flex justify-center">
+    <p>Si è verificato un errore!</p>;
+    </div>
+  
   </> 
   
 }

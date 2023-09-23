@@ -17,7 +17,7 @@ export default function Profile() {
     <Helmet>
       <title>{t("profile.meta.title")}</title>
     </Helmet>
-    <div className="mt-24 min-h-screen px-24">
+    <div className="pt-20 min-h-screen px-24">
       <h1 className="text-3xl"> {t('profile.title')} {username ? username : ""}</h1>
       {isAdmin ? <ProfileAdmin /> : <ProfileUser />}
     </div>

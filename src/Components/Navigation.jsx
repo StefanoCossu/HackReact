@@ -81,7 +81,7 @@ export default function Navigation() {
             </button>
         </div> 
     </div>
-    <div className={"bg-gray-300 dark:bg-sky-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-sm fixed right-0 z-20 h-screen p-4 overflow-y-auto transition-transform w-full pt-20 flex flex-col md:hidden " + ( open ? "" : "translate-x-full")}>
+    <div className={"bg-gray-300 dark:bg-sky-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-sm fixed right-0 z-20 h-screen p-4 overflow-y-auto transition-transform w-full flex flex-col md:hidden pt-20" + ( open ? "" : "translate-x-full")}>
         <Link to="/" className="font-title py-10">Home</Link>
         <Link to="/search" className="font-title py-10">Search</Link>
         {profile &&

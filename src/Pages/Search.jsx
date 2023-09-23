@@ -38,8 +38,6 @@ export default function Search() {
       });
   }, [searchParams]);
 
-
-
   const page_size = 12;
 
   const handlePage = (order) => {
@@ -55,9 +53,9 @@ export default function Search() {
     }else if (order === "end") {
         setSearchParams({
           ...allParams,
-          page: allParams.page = 833 ,
+          page: allParams.page = Math.ceil(games.count / page_size ),
         })
-        setNum(833);
+        setNum(games.count / page_size);
     }else if (order === "start") {
         setSearchParams({
           ...allParams,
@@ -85,7 +83,7 @@ export default function Search() {
     <Helmet>
       <title>{t("search.meta.title")}</title>
     </Helmet>
-    <div className="flex min-h-screen px-6">
+    <div className="flex min-h-screen px-6 pt-14">
       <div className="flex w-1/5 flex-col">
         <div className="mb-12"></div>
         <input
@@ -128,10 +126,10 @@ export default function Search() {
               </div>
               <div className="">{searchParams.get("page")}</div>
               <div>
-              { !(num == 833) &&  <Button onClick={() => handlePage("next")} label={<Next />} type={"button"}/>}
+              { !(num == games.count / page_size) &&  <Button onClick={() => handlePage("next")} label={<Next />} type={"button"}/>}
               </div>
               <div>
-              { !(num == 833) &&  <Button onClick={() => handlePage("end")} label={<End />} type={"button"}/>}
+              { !(num == games.count / page_size) &&  <Button onClick={() => handlePage("end")} label={<End />} type={"button"}/>}
               </div>
               
             </div>

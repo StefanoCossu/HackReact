@@ -74,8 +74,8 @@ export default function SignIn() {
       })}
       onSubmit={(values) => submit(values)}
     >
-      <Form className="mx-auto flex w-1/3 flex-col  text-black">
-
+      <Form className="mx-auto flex w-1/3 flex-col  text-black pt-20">
+        <h1 className="text-center my-4">Registrati</h1>
         <div className="mb-8 flex flex-col">
           <Field
             name="first_name"

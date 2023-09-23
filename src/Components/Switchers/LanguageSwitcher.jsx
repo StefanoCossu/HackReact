@@ -8,9 +8,9 @@ export default function LanguageSwitcher(){
         i18n.changeLanguage(code);
     }
 
-    return <div className="flex">
+    return <div className="flex mx-2">
         {
-            LANGUAGES.map(el => <span className={"cursor-pointer mx-2" + (el.code === i18n.resolvedLanguage ? "font-bold uppercase" : "")} onClick={()=>change(el.code)} key={el.code}>{el.code}</span> )
+            LANGUAGES.map(el => <span className={"cursor-pointer" } onClick={()=>change(el.code)} key={el.code}><span className={(el.code === "en" ? "fi fi-gb " : "fi fi-it") + (el.code === i18n.resolvedLanguage ? "hidden absolute" : "") }></span> </span> )
         }
     </div>
 }
