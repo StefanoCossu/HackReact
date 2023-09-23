@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-export default function GenresList({ genres, searchParams, setSearchParams}) {
+export default function GenresList({ genres, searchParams, setSearchParams, num}) {
   const {t} = useTranslation()
         const handleChange = (slug) => {
           const allParams = Object.fromEntries([...searchParams]);
@@ -9,6 +9,7 @@ export default function GenresList({ genres, searchParams, setSearchParams}) {
             genres: slug,
             page: 1
           });
+          num(1)
         };
         return (
           <>

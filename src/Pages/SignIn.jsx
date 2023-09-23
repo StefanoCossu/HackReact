@@ -1,7 +1,7 @@
 
 import { Formik, Field, Form} from "formik";
 import * as Yup from "yup";
-
+import Button from "../Components/uI/Button";
 import useAuthStore from "../store/authStore";
 import { useNavigate } from "react-router-dom";
 import Input from "../Components/uI/Input";
@@ -74,31 +74,9 @@ export default function SignIn() {
       })}
       onSubmit={(values) => submit(values)}
     >
-      <Form className="mx-auto flex w-1/3 flex-col  text-black pt-20">
-        <h1 className="text-center my-4">Registrati</h1>
-        <div className="mb-8 flex flex-col">
-          <Field
-            name="first_name"
-            component={Input}
-            label="First Name"
-            type="text"
-          />
-        </div>
-
-        <div className="mb-8 flex flex-col">
-          <Field name="age" component={Input} label="Age" type="number" />
-        </div>
-
-        <div className="mb-8 flex flex-col">
-          <Field
-            className="border border-slate-300"
-            name="last_name"
-            label="Last Name"
-            type="text"
-            component={Input}
-          />
-        </div>
-        <div className="mb-8 flex flex-col">
+      <Form className="mx-auto min-h-screen flex w-4/5 flex-wrap rounded bg-slate-50 py-20 text-black shadow dark:bg-gray-900 md:w-2/3">
+        <h1 className="text-center w-full my-10 text-4xl font-extrabold ">Registrati</h1>
+        <div className="mb-8 w-1/2 px-2">
           <Field
             className="border border-slate-300"
             name="username"
@@ -107,7 +85,28 @@ export default function SignIn() {
             component={Input}
           />
         </div>
-        <div className="mb-8 flex flex-col">
+        <div className="mb-8 w-1/2 px-2">
+          <Field name="age" component={Input} label="Age" type="number" />
+        </div>
+        <div className="mb-8 w-1/2 px-2">
+          <Field
+            name="first_name"
+            component={Input}
+            label="First Name"
+            type="text"
+          />
+        </div>
+        <div className="mb-8 w-1/2 px-2">
+          <Field
+            className="border border-slate-300"
+            name="last_name"
+            label="Last Name"
+            type="text"
+            component={Input}
+          />
+        </div>
+        
+        <div className="mb-8 w-full px-2">
           <Field
             className="border border-slate-300"
             name="email"
@@ -116,7 +115,7 @@ export default function SignIn() {
             component={Input}
           />
         </div>
-        <div className="mb-8 flex flex-col">
+        <div className="mb-8 w-1/2 px-2">
           <Field
             className="border border-slate-300"
             name="password"
@@ -126,7 +125,7 @@ export default function SignIn() {
 
           />
         </div>
-        <div className="mb-8 flex flex-col">
+        <div className="mb-8 w-1/2 px-2">
           <Field
             className="border border-slate-300"
             name="confirm_password"
@@ -135,7 +134,9 @@ export default function SignIn() {
             component={Input}
           />
         </div>
-        <button type="submit">Submit</button>
+        <div className="flex justify-center w-full">
+          <Button type="submit" label={"Registrati"} />
+        </div>  
       </Form>
     </Formik>
     </>

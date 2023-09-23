@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-export default function StoresList({ stores, searchParams, setSearchParams }) {
+export default function StoresList({ stores, searchParams, setSearchParams,num }) {
   const {t}=useTranslation();
     const handleChange = (id) => {
       const allParams = Object.fromEntries([...searchParams]);
@@ -10,6 +10,7 @@ export default function StoresList({ stores, searchParams, setSearchParams }) {
         stores: id,
         page: 1
       });
+      num(1)
     };
     return (
       <>

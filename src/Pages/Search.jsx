@@ -18,7 +18,7 @@ export default function Search() {
   const { genres, stores } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [num,setNum] = useState(1)
+  const [num,setNum] = useState(0)
 
   const [games, setGames] = useState(null);
   const [searched, setSearched] = useState("");
@@ -99,12 +99,14 @@ export default function Search() {
           genres={genres}
           searchParams={searchParams}
           setSearchParams={setSearchParams}
+          num={setNum}
         />
         <hr className="my-12" />
         <StoresList
           stores={stores}
           searchParams={searchParams}
           setSearchParams={setSearchParams}
+          num={setNum}
         />
       </div>
       <div className="w-4/5">
@@ -115,24 +117,26 @@ export default function Search() {
                 <Card key={game.id} game={game} />
               ))}
             </div>
-
+            {num > 0 &&
             <div className="mb-12 flex w-full justify-evenly">
-              <div>
-              {num > 1 && 
-              <Button onClick={() => handlePage("start")} label={<Init />} type={"button"}/>}
-              </div>
-              <div>
-              {num > 1 && <Button onClick={() => handlePage("prev")} label={<Prev />} type={"button"}/>}
-              </div>
-              <div className="">{searchParams.get("page")}</div>
-              <div>
-              { !(num == games.count / page_size) &&  <Button onClick={() => handlePage("next")} label={<Next />} type={"button"}/>}
-              </div>
-              <div>
-              { !(num == games.count / page_size) &&  <Button onClick={() => handlePage("end")} label={<End />} type={"button"}/>}
-              </div>
-              
+            <div>
+            {num > 1 && 
+            <Button onClick={() => handlePage("start")} label={<Init />} type={"button"}/>}
             </div>
+            <div>
+            {num > 1 && <Button onClick={() => handlePage("prev")} label={<Prev />} type={"button"}/>}
+            </div>
+              <div className="">{searchParams.get("page")}</div>
+            <div>
+            { !(num == games.count / page_size) &&  <Button onClick={() => handlePage("next")} label={<Next />} type={"button"}/>}
+            </div>
+            <div>
+            { !(num == games.count / page_size) &&  <Button onClick={() => handlePage("end")} label={<End />} type={"button"}/>}
+            </div>
+            
+          </div>
+            }
+            
           </>
         )}
       </div>
