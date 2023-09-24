@@ -1,5 +1,5 @@
-import useAuthStore from "../Store/authStore";
-import getProfileImage from "../Utilities/getProfileImage"
+import useAuthStore from "../store/authStore";
+import getProfileImage from "../utilities/getProfileImage"
 
 export default function Img(){
     const profile = useAuthStore((state) => state.profile)

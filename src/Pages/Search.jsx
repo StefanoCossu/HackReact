@@ -51,11 +51,15 @@ export default function Search() {
       })
       setNum(num+1);
     }else if (order === "end") {
+      let end = Math.ceil(games.count/page_size )
+      if (end > 833) {
+        end = 833
+      }
         setSearchParams({
           ...allParams,
-          page: allParams.page = Math.ceil(games.count / page_size ),
+          page: allParams.page = end,
         })
-        setNum(games.count / page_size);
+        setNum(end);
     }else if (order === "start") {
         setSearchParams({
           ...allParams,

@@ -10,7 +10,7 @@ export default function GameDetails() {
   const game = useLoaderData();
   const profile = useAuthStore((state) => state.profile);
   const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
-
+  // console.log(game.id);
   const isFavorite = () => {
     return profile.favorites.find((el) => +el.game_id === game.id);
   };
