@@ -1,7 +1,9 @@
 {
     "home":{
         "title":"Benvenuto su",
-        "subtitle":"La casa dei giocatori!"
+        "subtitle":"La casa dei giocatori!",
+        "games":"Nessun gioco preferito",
+        "prefered": "I tuoi giochi preferiti!"
     },
     "login":{
         "title": "Loggati Ora!"

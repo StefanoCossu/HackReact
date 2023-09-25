@@ -11,7 +11,9 @@ export default function Home() {
   const [data, setData] = useState(null)
   const [game,setGame] = useState(null)
   const [loader,setLoader] = useState(false)
+  const [counter,setCounter] = useState(0)
   let list = []
+  
   const getPrefered = (params)=>{
       params.favorites.map(el => {
       list.push(el.game_id)
@@ -35,16 +37,16 @@ export default function Home() {
    
           if (profile) {
             setGame(getGameS(profile))
-            console.log(game);
-            console.log(profile); 
-            
+ 
           }else{
             setTimeout(() => {
-              setLoader(!loader)
-              console.log("qui");
-            }, 1000);
+              if (profile) {
+                setLoader(!loader)
+              }
+            }, 1500);
+            
             }
-  },[loader])
+  },[profile])
 
   useEffect(()=>{
       if (game) {
@@ -53,9 +55,15 @@ export default function Home() {
         console.log(game);
       }else{
         setTimeout(() => {
-          setLoader(!loader)
-          console.log("qui");
-        }, 1000);
+          setCounter(counter +1)
+          if (counter < 3) {
+            setLoader(!loader)
+            console.log("ok");
+            return
+          }
+          console.log("finito");
+       }, 1500);
+       
         
       }
   
@@ -79,7 +87,7 @@ export default function Home() {
       {profile && 
       <>
        <h2 className="text-2xl mb-20 text-center font-extrabold font-title">
-       I tuoi giochi preferiti:
+       {t("home.prefered")}
      </h2>
       <div className="mb-10 mx-10 grid grid-cols-4 grid-rows-2 gap-4">
           {data && data.map((el, index) =>{
@@ -89,7 +97,7 @@ export default function Home() {
           }
       </div>
       {!data &&
-          <p className="text-center font-bold">Non hai giochi preferiti</p>}
+          <p className="text-center font-bold">{t("home.games")}</p>}
       </>
       }
     </div> 

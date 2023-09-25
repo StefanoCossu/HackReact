@@ -1,7 +1,9 @@
 {
     "home":{
         "title":"Welcome to",
-        "subtitle":"The players' home"
+        "subtitle":"The players' home",
+        "games":"No predered game",
+        "prefered": "Your prefered games"
     },
     "login":{
         "title": "Login Now!"
