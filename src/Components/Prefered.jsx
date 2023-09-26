@@ -1,5 +1,4 @@
 import useAuthStore from "../store/authStore";
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Carousel from "./uI/Carousel";
 
@@ -8,7 +7,7 @@ export default function Prefereds(){
     const {t} = useTranslation();
 
 
-    return <><div className="mb-10 mx-10">
+    return <><div className="mx-10 pb-16">
     {profile.favorites && 
     <Carousel slide={profile.favorites} />
     }

@@ -26,7 +26,7 @@ export default function Home() {
       </div>
       {profile && 
       <>
-       <h2 className="text-2xl mb-20 text-center font-extrabold font-title">
+       <h2 className="text-2xl text-center font-extrabold font-title">
        {t("home.prefered")}
      </h2>
      <div className="w-full">
