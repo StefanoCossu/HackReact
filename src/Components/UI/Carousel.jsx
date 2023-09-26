@@ -11,6 +11,7 @@ export default function Carousel({slide}){
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <>
+    <div className=" overflow-hidden">
       <Swiper
         loop={true}
         speed={1000}
@@ -18,7 +19,7 @@ export default function Carousel({slide}){
                      delay: 2500,
                      disableOnInteraction: false,
                   }}
-        spaceBetween={10}
+        spaceBetween={0}
         draggable={true}
         navigation={false}
         thumbs={{ swiper: thumbsSwiper }}
@@ -27,17 +28,17 @@ export default function Carousel({slide}){
       >
         {slide.map( (el,index) => {
       return  (
-      <SwiperSlide className="swiper-slide" key={index}>
+      <SwiperSlide className="swiper-slide relative" key={index}>
         <Link to={`/game/${el.game_id}`}>
-        <div className='relative'>
-        <p className='absolute text-white bottom-0 left-1 bg-cyan-500 border-red-500 p-2 mb-1'>{el.game_name}</p>
+        <p className='etiquette absolute z-10 bottom-4 left-6 border-2 px-2 dark:bg- text-white bg-[#6a93cb] border-[#14496c] dark:bg-[#14496cb3]'>{el.game_name}</p>
         <img src={el.game_image} className="swiper-slideImg w-[90vw]" alt={el.game_name} />
-        </div>
         </Link>   
         </SwiperSlide>)
     })}
        
       </Swiper>
+    </div>
+      
       <Swiper
         onSwiper={setThumbsSwiper}
         loop={true}
@@ -50,8 +51,8 @@ export default function Carousel({slide}){
         className="mySwiper"
       >
         {slide.map( (el,index) => {
-      return  (<SwiperSlide className="swiper-slide" key={index} >
-        <img src={el.game_image}  alt={el.game_name} /> 
+      return  (<SwiperSlide className="swiper-Minislide" key={index} >
+        <img className="" src={el.game_image}  alt={el.game_name} /> 
         </SwiperSlide>)
     })}
       </Swiper>
