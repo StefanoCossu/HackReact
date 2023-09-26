@@ -20,11 +20,11 @@ import { ResponsivePieCanvas } from '@nivo/pie'
                 ]
             }}
             arcLinkLabelsSkipAngle={10}
-            arcLinkLabelsTextColor="#333333"
+            arcLinkLabelsTextColor="white"
             arcLinkLabelsThickness={2}
             arcLinkLabelsColor={{ from: 'color' }}
             arcLabelsSkipAngle={10}
-            arcLabelsTextColor="#333333"
+            arcLabelsTextColor="white"
             defs={[
                 {
                     id: 'dots',
@@ -45,56 +45,56 @@ import { ResponsivePieCanvas } from '@nivo/pie'
                     spacing: 10
                 }
             ]}
-            fill={[
-                {
-                    match: {
-                        id: 'ruby'
-                    },
-                    id: 'dots'
-                },
-                {
-                    match: {
-                        id: 'c'
-                    },
-                    id: 'dots'
-                },
-                {
-                    match: {
-                        id: 'go'
-                    },
-                    id: 'dots'
-                },
-                {
-                    match: {
-                        id: 'python'
-                    },
-                    id: 'dots'
-                },
-                {
-                    match: {
-                        id: 'scala'
-                    },
-                    id: 'lines'
-                },
-                {
-                    match: {
-                        id: 'lisp'
-                    },
-                    id: 'lines'
-                },
-                {
-                    match: {
-                        id: 'elixir'
-                    },
-                    id: 'lines'
-                },
-                {
-                    match: {
-                        id: 'javascript'
-                    },
-                    id: 'lines'
-                }
-            ]}
+            // fill={[
+            //     {
+            //         match: {
+            //             id: 'ruby'
+            //         },
+            //         id: 'dots'
+            //     },
+            //     {
+            //         match: {
+            //             id: 'c'
+            //         },
+            //         id: 'dots'
+            //     },
+            //     {
+            //         match: {
+            //             id: 'go'
+            //         },
+            //         id: 'dots'
+            //     },
+            //     {
+            //         match: {
+            //             id: 'python'
+            //         },
+            //         id: 'dots'
+            //     },
+            //     {
+            //         match: {
+            //             id: 'scala'
+            //         },
+            //         id: 'lines'
+            //     },
+            //     {
+            //         match: {
+            //             id: 'lisp'
+            //         },
+            //         id: 'lines'
+            //     },
+            //     {
+            //         match: {
+            //             id: 'elixir'
+            //         },
+            //         id: 'lines'
+            //     },
+            //     {
+            //         match: {
+            //             id: 'javascript'
+            //         },
+            //         id: 'lines'
+            //     }
+            // ]}
             legends={[
                 {
                     anchor: 'right',
@@ -105,7 +105,7 @@ import { ResponsivePieCanvas } from '@nivo/pie'
                     itemsSpacing: 2,
                     itemWidth: 60,
                     itemHeight: 14,
-                    itemTextColor: '#999',
+                    itemTextColor: '#999 dark:white',
                     itemDirection: 'left-to-right',
                     itemOpacity: 1,
                     symbolSize: 14,
