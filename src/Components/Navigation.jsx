@@ -43,7 +43,7 @@ export default function Navigation() {
       setColor("bg-gradient-to-r from-[#14496c] from-98% via-[#14496c] via-98% to-[#14496c] before:bg-[#155A7D]")
     }else if (location.pathname === "/profile"){
       setWidth("w-[50vw]")
-      setColor("bg-gradient-to-r from-[#14496c] from-20% via-[#14496c] via-90% to-[#144363] before:bg-[#144363]")
+      setColor("bg-gradient-to-r from-[#14496c] from-95% via-[#14496c] via-99% to-[#14496c] before:bg-[#14496c]")
     }
     
     
@@ -51,7 +51,7 @@ export default function Navigation() {
   
   return (
     <nav>
-    <div className="fixed z-30 flex h-12 w-screen items-center bg-gradient-to-r from-[#14496c] from-50% via-[#14496cb3] via-90% to-[#14496cb3] px-2 after:absolute after:bottom-[-1px] after:left-[77px] after:h-[1px] after:w-full  after:content-['']">
+    <div className="fixed z-30 flex h-12 w-screen items-center bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] px-2 after:absolute after:bottom-[-1px] after:left-[77px] after:h-[1px] after:w-full  after:content-['']">
       <div className={
         `after:border-r-6 after:animate-flash fixed left-0 top-[19px] z-[-1] h-[44px] ${width ? `${width}`:"w-[100px]"} border-b-2 border-t-0 border-cyan-400 ${color ?  `${color}`: "bg-[#14496c] before:bg-[#11496c]" } before:absolute before:bottom-[1px] before:right-[-8px] before:z-[0] before:h-[14px] before:w-[18px] before:skew-x-[-50deg]  before:content-[''] after:absolute after:bottom-[-2px] after:right-[-10px] after:h-[15px] after:w-[6px] after:skew-x-[-50deg] after:bg-white after:content-[''] ` 
         }
