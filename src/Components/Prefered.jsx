@@ -2,7 +2,7 @@ import useAuthStore from "../store/authStore";
 import { useTranslation } from "react-i18next";
 import Carousel from "./uI/Carousel";
 
-export default function Prefereds(){
+export default function Prefered(){
     const profile =  useAuthStore((state) => state.profile);
     const {t} = useTranslation();
 

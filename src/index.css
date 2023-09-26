@@ -13,6 +13,11 @@ html {
   --secondary: #14496c;
   --acc: rgb(108, 128, 150);
 }
+
+body{
+  background: linear-gradient(315deg, #6a93cb 0%, #a4bfef 74%);
+  /* background: linear-gradient(to right, #00BECC,#6375D9 400px,#7E2FE0 80%); */
+}
 :root {
   font-family: "Roboto", sans-serif;
 }
@@ -21,12 +26,8 @@ html {
 }
 
 .swiper {
-  width: 700px;
+  width: 100%;
   height: 400px;
-  /* --swiper-navigation-size: 34px;
-  --swiper-navigation-top-offset: 50%;
-  --swiper-navigation-sides-offset: 20px;
-  --swiper-navigation-color: var(--secondary); */
 }
 
 .swiper-slide {
@@ -37,29 +38,28 @@ html {
 }
 
 .mySwiper2 {
-  width: 700px;
+  width: 100%;
   height: 400px;
 }
 
 .mySwiper {
   height: 20%;
-  width: 600px;
+  width: 95%;
   box-sizing: border-box;
-  /* padding: 10px 0; */
-  margin-top: -30px;
+  margin-top: 10px;
   --swiper-navigation-size: 25px;
   --swiper-navigation-top-offset: 50%;
   --swiper-navigation-sides-offset: 0%;
   --swiper-navigation-color: white;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .mySwiper .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
   height: 80px;
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .mySwiper .swiper-slide-thumb-active {
@@ -68,7 +68,7 @@ html {
 
 .swiper-slideImg {
   display: block;
-  width: 600px;
-  height: 300px;
+  position: center;
+  height: 600px;
   object-fit: cover;
 }

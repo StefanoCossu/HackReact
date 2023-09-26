@@ -31,7 +31,7 @@ export default function Carousel({slide}){
         <Link to={`/game/${el.game_id}`}>
         <div className='relative'>
         <p className='absolute text-white bottom-0 left-1 bg-cyan-500 border-red-500 p-2 mb-1'>{el.game_name}</p>
-        <img src={el.game_image} className="swiper-slideImg" alt={el.game_name} />
+        <img src={el.game_image} className="swiper-slideImg w-[90vw]" alt={el.game_name} />
         </div>
         </Link>   
         </SwiperSlide>)
@@ -41,7 +41,7 @@ export default function Carousel({slide}){
       <Swiper
         onSwiper={setThumbsSwiper}
         loop={true}
-        spaceBetween={10}
+        spaceBetween={0}
         slidesPerView={4}
         freeMode={true}
         navigation={true}
@@ -51,7 +51,7 @@ export default function Carousel({slide}){
       >
         {slide.map( (el,index) => {
       return  (<SwiperSlide className="swiper-slide" key={index} >
-        <img src={el.game_image} alt={el.game_name} /> 
+        <img src={el.game_image}  alt={el.game_name} /> 
         </SwiperSlide>)
     })}
       </Swiper>
