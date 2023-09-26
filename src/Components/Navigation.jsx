@@ -17,6 +17,7 @@ export default function Navigation() {
   const profile = useAuthStore((state) => state.profile)
 
   const [width, setWidth] = useState("w-[100px]")
+  const [color, setColor] = useState("bg-[#14496c] before:bg-[#11496c]")
 
   const logOut = () => async () => {
     try{
@@ -33,12 +34,16 @@ export default function Navigation() {
   useEffect(()=>{
     if (location.pathname === "/") {
       setWidth("w-[100px]")
+      setColor("bg-[#14496c] before:bg-[#11496c]")
     }else if (location.pathname === "/search") {
       setWidth("w-[30vw]")
+      setColor("bg-gradient-to-r from-[#14496c] from-20% via-[#144E6Fvia-90% to-[#144E6F] before:bg-[#144E6F]")
     }else if (location.pathname === "/sign-in") {
       setWidth("w-[50vw]")
+      setColor("bg-gradient-to-r from-[#14496c] from-20% via-[#155A7D via-90% to-[#155A7D] before:bg-[#155A7D]")
     }else if (location.pathname === "/profile"){
       setWidth("w-[50vw]")
+      setColor("bg-gradient-to-r from-[#14496c] from-20% via-[#155A7D via-90% to-[#155A7D] before:bg-[#285B7B]")
     }
     
     
@@ -48,13 +53,12 @@ export default function Navigation() {
     <nav>
     <div className="fixed z-30 flex h-12 w-screen items-center bg-gradient-to-r from-[#14496c] from-20% via-[#14496cb3] via-90% to-[#14496cb3] px-2 after:absolute after:bottom-[-1px] after:left-[77px] after:h-[1px] after:w-full  after:content-['']">
       <div className={
-        `after:border-r-6 after:animate-flash fixed left-0 top-[19px] z-[-1] h-[44px] ${width ? `${width}`:"w-[100px]"} border-b-2 border-t-0 border-cyan-400 bg-[#14496c] before:absolute before:bottom-[1px] before:right-[-8px] before:z-[0] before:h-[14px] before:w-[18px] before:skew-x-[-50deg] before:bg-[#11496c] before:content-[''] after:absolute after:bottom-[-2px] after:right-[-10px] after:h-[15px] after:w-[6px] after:skew-x-[-50deg] after:bg-white after:content-[''] ` 
+        `after:border-r-6 after:animate-flash fixed left-0 top-[19px] z-[-1] h-[44px] ${width ? `${width}`:"w-[100px]"} border-b-2 border-t-0 border-cyan-400 ${color ?  `${color}`: "bg-[#14496c] before:bg-[#11496c]" } before:absolute before:bottom-[1px] before:right-[-8px] before:z-[0] before:h-[14px] before:w-[18px] before:skew-x-[-50deg]  before:content-[''] after:absolute after:bottom-[-2px] after:right-[-10px] after:h-[15px] after:w-[6px] after:skew-x-[-50deg] after:bg-white after:content-[''] ` 
         }
         ></div>
         <div className="text-white flex justify-between md:w-1/2 w-2/3 font-title">
           <Link to="/" className="font-bold tracking-widest font-title" >Gamers&apos; Home</Link>
           <Link to="/search" className="hidden md:inline font-title" >Search</Link>
-          {/* <Link to="/" className="hidden md:inline font-title">Home</Link> */}
           {profile &&
           <Link to="/profile" className="hidden md:inline font-title">{profile && profile.username}</Link>
           }

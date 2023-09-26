@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,100;1,300&family=Sedgwick+Ave+Display&display=swap");
 @import "/node_modules/flag-icons/css/flag-icons.min.css";
+@import '/node_modules/swiper/swiper.css';
+@import '/node_modules/swiper/modules/pagination.css';
+@import '/node_modules/swiper/modules/navigation.css';
 
 @tailwind base;
 @tailwind components;
@@ -15,4 +18,57 @@ html {
 }
 .font-title {
   font-family: "Sedgwick Ave Display", cursive;
+}
+
+.swiper {
+  width: 700px;
+  height: 400px;
+  /* --swiper-navigation-size: 34px;
+  --swiper-navigation-top-offset: 50%;
+  --swiper-navigation-sides-offset: 20px;
+  --swiper-navigation-color: var(--secondary); */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.mySwiper2 {
+  width: 700px;
+  height: 400px;
+}
+
+.mySwiper {
+  height: 20%;
+  width: 600px;
+  box-sizing: border-box;
+  /* padding: 10px 0; */
+  margin-top: -30px;
+  --swiper-navigation-size: 25px;
+  --swiper-navigation-top-offset: 50%;
+  --swiper-navigation-sides-offset: 0%;
+  --swiper-navigation-color: white;
+}
+
+.mySwiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 80px;
+  opacity: 0.7;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-slideImg {
+  display: block;
+  width: 600px;
+  height: 300px;
+  object-fit: cover;
 }

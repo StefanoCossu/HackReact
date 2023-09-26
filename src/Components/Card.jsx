@@ -1,7 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAuthStore from "../store/authStore";
 export default function Card({game}){
-    const location = useLocation()
+
     const profile = useAuthStore((state) => state.profile)
     const is_Favorite = () => {
        return profile.favorites.find(el => el.game_id === game.id) 
@@ -15,7 +15,7 @@ export default function Card({game}){
         <img src={game.background_image} className="w-full object-cover h-40 mb-2" alt={game.name} />
         
         {profile && <div className="flex justify-center">
-            {(location.pathname !== "/") && <svg className={is_Favorite() ? "fill-red-500 stroke-red-500 dark:stroke-red-500 dark:fill-red-500" : "hidden"} strokeWidth={1.5}
+            {<svg className={is_Favorite() ? "fill-red-500 stroke-red-500 dark:stroke-red-500 dark:fill-red-500" : "hidden"} strokeWidth={1.5}
                  height="1em" viewBox="0 0 512 512">
                     <path
                     strokeLinecap="round"

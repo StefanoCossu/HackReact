@@ -23,7 +23,7 @@ export default function GameChat({ game }) {
       .order("id", { ascending: false })
       .limit(10);
 
-    console.log(data);
+    // console.log(data);
     if (data) {
       setMessages(data);
     }

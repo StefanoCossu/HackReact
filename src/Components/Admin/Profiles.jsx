@@ -6,10 +6,21 @@ import Button from "../uI/Button"
 export default function Profiles(){
     const [data, setData] = useState()
     const [page, setPage] = useState(0)
+    const [checker,setChecker]=useState(true)
+    const [counter,setCounter]=useState(0)
+    const num = 10
+   
+    const getCount = async () => {
+    let count = await supabase
+    .from('profiles')
+    .select('*', { count: 'exact' })
+    return setCounter(count.count)
+    
+    }
+    
 
     const getData = async () => {
-        let {data} = await supabase.from("profiles").select().range(10 * page, page * 10 + 10).order("id",{ascending: true});
-        
+        let {data} = await supabase.from("profiles").select().range(num * page, page * num + num-1).order("id",{ascending: true});
         const headers = [
             "Id","Usename","Firstname","Lastname","Banned until",
         ];
@@ -25,8 +36,21 @@ export default function Profiles(){
         headers,entries,
     });
     };
-    useEffect(() => {
-        getData()
+    useEffect(()=>{
+        getCount()
+        if (counter &&((counter/((page+1)*num))> 1)) {
+            setChecker(true)
+        }else{
+            setChecker(false)
+        }
+    },[counter])
+    useEffect(() => {     
+        getData() 
+        if (counter &&((counter/((page+1)*num))> 1)) {
+            setChecker(true)
+        }else{
+            setChecker(false)
+        }
     },[page])
     return <div>
         {data ? (
@@ -62,7 +86,9 @@ export default function Profiles(){
             (<Button label={"prev"} onClick={() => setPage((prev) => prev - 1)} type={"button"}/>)}
             </div>
             <div>
-            <Button label={"next"} onClick={() => setPage((prev) => prev + 1)} type={"button"}/>
+            {checker && 
+                <Button label={"next"} onClick={() => setPage((prev) => prev + 1)} type={"button"}/>
+            }
             </div>
         </div>
     </div>

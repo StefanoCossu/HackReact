@@ -10,7 +10,7 @@ export default function GameDetails() {
   const game = useLoaderData();
   const profile = useAuthStore((state) => state.profile);
   const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
-  // console.log(game.id);
+
   const isFavorite = () => {
     return profile.favorites.find((el) => +el.game_id === game.id);
   };
@@ -22,13 +22,13 @@ export default function GameDetails() {
         .from("favorites")
         .delete()
         .eq("id", isFavorite().id);
-      console.log(data, error);
+      
     } else {
       const { data, error } = await supabase
         .from("favorites")
-        .insert({ user_id: profile.id, game_id: game.id, game_name: game.name })
+        .insert({ user_id: profile.id, game_id: game.id, game_name: game.name ,game_image:game.background_image })
         .select();
-      console.log(data, error);
+    
     }
 
     setLoggedIn(data.data.session);
