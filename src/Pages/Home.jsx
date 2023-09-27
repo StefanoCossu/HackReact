@@ -39,7 +39,6 @@ export default function Home() {
       }
     </div>
     </div> 
-    <div className="myBox1 w-[500px] bg-black h-[300px] relative"></div>
     </>
   );
 }

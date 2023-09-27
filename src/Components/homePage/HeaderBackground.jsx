@@ -67,7 +67,7 @@ export default function HeaderBackground(){
 
     return(
         <div className="flex justify-center w-full mb-20 md:mb-20 lg:mb-0">
-            <div className="relative flex justify-center flex-wrap lg:w-[1558px] lg:h-[400px] md:w-[1558px] md:h-[300px] w-[460px] h-[200px] mt-20 md:mt-0 myShadow">
+            <div className="relative flex justify-center flex-wrap lg:w-[1558px] lg:h-[400px] md:w-[1558px] md:h-[500px] w-[460px] h-[300px] mt-20 md:mt-0 myShadow">
             {grid && grid.map((rows, i)=>
             rows.map((col,k)=>(
                 <div key={`${i}/${k}/$`} className={`w-[20px] h-[20px] ${grid[i][k] ? "bg-green-200 dark:bg-cyan-600" : ""}  border-[1px] border-grey-500 dark:border-gray-800` }></div>
