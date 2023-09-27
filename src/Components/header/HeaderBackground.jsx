@@ -1,15 +1,13 @@
 import { useState , useEffect } from "react"
 import { useTranslation } from "react-i18next"
 
-// import "./headr.css"
-
-
-// import "./header"
 export default function HeaderBackground(){
+    const w = window.innerWidth;
     const {t}= useTranslation()
-    const cols = 77
-    const rows = 20
     const [grid, setGrid] = useState()
+    const cols = w > 1024 ? 77 : w > 768 ? 36 : 14
+    const rows = w > 1024 ? 20 : w > 768 ? 22 : 15
+
     const positions = [
         [0,1],
         [0,-1],
@@ -58,20 +56,20 @@ export default function HeaderBackground(){
     useEffect(()=>{
         setGrid(randomGrid())
     },[])
-    useEffect(()=>{
+   useEffect(()=>{
         setInterval(()=>{
             runSimulation(grid)
         }, 1600)
-        
-    },[])
+    },[grid])
 
     return(
-        <div className="relative flex flex-wrap">
+        <div className="flex justify-center w-full mb-20 md:mb-20">
+            <div className="relative flex flex-wrap lg:w-[1558px] lg:h-[400px] md:w-[1558px] md:h-[300px] w-[460px] h-[200px] mt-20 md:mt-0">
             {grid && grid.map((rows, i)=>
             rows.map((col,k)=>(
                 <div key={`${i}/${k}/$`} className={`w-[20px] h-[20px] ${grid[i][k] ? "bg-green-200 dark:bg-cyan-600" : ""}  border-[1px] border-grey-500 dark:border-gray-800` }></div>
             )))}
-            <div className="w-full absolute top-20">
+            <div className="w-full absolute md:top-20">
             <h1 className="text-center bg-gradient-to-r from-[#00BECC] from-98% via-98%  via-[#541c97] to-[#541c97]  bg-clip-text text-4xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text-10xl  md:text-8xl font-title py-12">
           {t("home.title")} {import.meta.env.VITE_PROJECT_NAME}
           </h1>
@@ -80,5 +78,7 @@ export default function HeaderBackground(){
           </h2>
             </div>
         </div>
+        </div>
+        
     )
 }
