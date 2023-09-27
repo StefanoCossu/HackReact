@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import useAuthStore from "../store/authStore";
 import Prefered from "../Components/Prefered";
-import HeaderBackground from "../Components/header/HeaderBackground";
+import HeaderBackground from "../Components/HeaderBackground";
 
 
 

@@ -59,7 +59,7 @@ export default function HeaderBackground(){
    useEffect(()=>{
         setInterval(()=>{
             runSimulation(grid)
-        }, 1600)
+        }, 1800)
     },[grid])
 
     return(
