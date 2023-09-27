@@ -103,6 +103,10 @@ body{
 .myTextBox :first-child{
   transition: 1s;
 }
+.myTextBox:hover :first-child{
+  transition: 1s;
+  transform: scale(1.2);
+}
 
 .myTend{
   z-index: 20;
@@ -131,7 +135,7 @@ to{left: -2000px;
 display: none;}
 }
 
-.myTextBox::before, .myTextBox::after{
+.myBox::before, .myBox::after{
   opacity: 0;
   content: '';
   position: absolute;
@@ -147,15 +151,8 @@ display: none;}
   animation: steam 20s linear infinite;
   
 }
-/* .myTextBox:hover .myTextBox::before, .myTextBox::after{
-  opacity: 1;
-} */
-.myTextBox:hover :first-child{
-  opacity: 1;
-  transition: 1s;
-  transform: scale(1.2);
-} 
-.myTextBox:hover::after , .myTextBox:hover::before {
+
+.myBox:hover::after , .myBox:hover::before {
  opacity: 1;
 }
 
@@ -174,7 +171,6 @@ display: none;}
   }
 }
 
-.myTextBox:after{
+.myBox:after{
   filter: blur(50px);
-  z-index: -1;
 }

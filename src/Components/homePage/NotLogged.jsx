@@ -6,11 +6,11 @@ export default function NotLogged(){
     return(
         <>
             <div className="myTend py-20 relative flex w-full h-full overflow-hidden justify-evenly items-center">
-                    <div className="myTextBox myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] pt-5 pb-12 m-3 relative flex flex-col justify-center items-center w-1/4">
+                    <div className="myTextBox myBox myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] pt-5 pb-12 m-3 relative flex flex-col justify-center items-center w-1/4">
                         <h2 className="mb-5 font-bold text-2xl bg-gradient-to-r from-[#00BECC] from-40% via-90%  via-[#b094d3] to-[#b499d4] text-transparent bg-clip-text">Registrati ora!</h2>
                         <Link to={'/sign-in'}><Button label={t("common.register")}/></Link>
                     </div>                
-                    <div className="myTextBox myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] pt-5 pb-12 m-3 relative flex flex-col justify-center items-center w-1/4"> 
+                    <div className="myTextBox myBox myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] pt-5 pb-12 m-3 relative flex flex-col justify-center items-center w-1/4"> 
                         <h2 className="mb-5 font-bold text-2xl bg-gradient-to-r from-[#00BECC] from-40% via-90%  via-[#b094d3] to-[#b499d4] text-transparent bg-clip-text">Già registrato?</h2>
                         <Link to={'/login'}><Button label={t("common.login")}/></Link>
                     </div>     
