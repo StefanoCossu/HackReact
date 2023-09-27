@@ -15,14 +15,14 @@ export default function Home() {
     <Helmet>
       <title>Home</title>
     </Helmet>
-    <div className="min-h-screen">
+    <div className="py-10 mb-10">
       <div className="gap-12 px-12 py-12 md:py-24 md:flex">
         <div className="w-full">
         <HeaderBackground />
         </div>
       </div>
       
-     <div className="w-full bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] pt-10">
+     <div className="shadow mt-5 pb-[100px] mx-10 bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] pt-10">
      {profile && 
       <>
       <div>

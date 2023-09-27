@@ -7,7 +7,7 @@ export default function Prefered(){
     const {t} = useTranslation();
 
 
-    return <><div className="mx-10 pb-16">
+    return <><div className="mx-10 pt-16 pb-10 shadow">
     {profile.favorites && 
     <Carousel slide={profile.favorites} />
     }
