@@ -16,6 +16,7 @@ html {
 
 body{
   background: linear-gradient(315deg, #6a93cb 0%, #a4bfef 74%);
+  overflow-x: hidden;
   /* background: linear-gradient(to right, #00BECC,#6375D9 400px,#7E2FE0 80%); */
 }
 :root {
@@ -72,6 +73,7 @@ body{
   position: center;
   height: 600px;
   object-fit: fill;
+  transition: 1s;
 }
 
 .etiquette{
@@ -79,5 +81,17 @@ body{
 }
 .swiper-slide:hover .etiquette{
   display: block;
+}
+.swiper-slideImg:hover{
+  transform: scale(1.2);
+  transition: 1s;
+}
+
+.card{
+  transition: 1s;
+}
+.card:hover{
+  transform: scale(1.2);
+  transition: 1s;
 }
 

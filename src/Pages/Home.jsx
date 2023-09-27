@@ -21,17 +21,20 @@ export default function Home() {
         <HeaderBackground />
         </div>
       </div>
-      {profile && 
+      
+     <div className="w-full bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] pt-10">
+     {profile && 
       <>
-       <h2 className="ms-20 bg-gradient-to-r from-[#00BECC] to-98% via-[#7E2FE0] bg-clip-text text-4xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text:5xl md:text:4xl font-title pb-6">
+      <div>
+      <h2 className="ms-20 bg-gradient-to-r from-[#00BECC] to-98% via-[#7E2FE0] bg-clip-text text-4xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text:5xl md:text:4xl font-title pb-6">
        {t("home.prefered")}
      </h2>
-     <div className="w-full">
+      </div>
      <Prefered/>
-     </div>
-      
+     
       </>
       }
+    </div>
     </div> 
     </>
   );

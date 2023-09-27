@@ -12,8 +12,9 @@ export default function Card({game}){
     return<Link to={`/game/${game.id}`}> 
     <div className="mb-5 mx-1 justify-center text-white bg-secondary">
         <p className="h-10 mb-5 mt-5 ms-1">{game.name}</p> 
-        <img src={game.background_image} className="w-full object-cover h-40 mb-2" alt={game.name} />
-        
+        <div className="overflow-hidden">
+        <img src={game.background_image} className="card w-full object-cover h-40 mb-2" alt={game.name} />
+        </div>
         {profile && <div className="flex justify-center">
             {<svg className={is_Favorite() ? "fill-red-500 stroke-red-500 dark:stroke-red-500 dark:fill-red-500" : "hidden"} strokeWidth={1.5}
                  height="1em" viewBox="0 0 512 512">

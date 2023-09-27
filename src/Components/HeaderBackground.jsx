@@ -63,7 +63,7 @@ export default function HeaderBackground(){
     },[grid])
 
     return(
-        <div className="flex justify-center w-full mb-20 md:mb-20">
+        <div className="flex justify-center w-full mb-20 md:mb-20 lg:mb-0">
             <div className="relative flex flex-wrap lg:w-[1558px] lg:h-[400px] md:w-[1558px] md:h-[300px] w-[460px] h-[200px] mt-20 md:mt-0">
             {grid && grid.map((rows, i)=>
             rows.map((col,k)=>(
