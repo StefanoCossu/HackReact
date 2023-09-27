@@ -1,8 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import useAuthStore from "../store/authStore";
-import Prefered from "../Components/Prefered";
-import HeaderBackground from "../Components/HeaderBackground";
+import Prefered from "../Components/homePage/Prefered";
+import HeaderBackground from "../Components/homePage/HeaderBackground";
+import NotLogged from "../Components/homePage/NotLogged";
 
 
 
@@ -22,20 +23,23 @@ export default function Home() {
         </div>
       </div>
       
-     <div className="shadow mt-5 pb-[100px] mx-10 bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] pt-10">
+     <div className="myShadow mt-5 pb-5 mx-10 bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3]">
      {profile && 
       <>
       <div>
-      <h2 className="ms-20 bg-gradient-to-r from-[#00BECC] to-98% via-[#7E2FE0] bg-clip-text text-4xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text:5xl md:text:4xl font-title pb-6">
-       {t("home.prefered")}
-     </h2>
+        <h2 className="ms-20 pt-10 bg-gradient-to-r from-[#00BECC] to-98% via-[#7E2FE0] bg-clip-text text-4xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text:5xl md:text:4xl font-title pb-2">
+          {t("home.prefered")}
+        </h2>
       </div>
-     <Prefered/>
-     
+      <Prefered/>
       </>
+      }
+      {!profile &&
+        <NotLogged/>
       }
     </div>
     </div> 
+    <div className="myBox1 w-[500px] bg-black h-[300px] relative"></div>
     </>
   );
 }

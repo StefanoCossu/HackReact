@@ -135,7 +135,9 @@ export default function SignIn() {
           />
         </div>
         <div className="flex justify-center w-full">
-          <Button type="submit" label={"Registrati"} />
+          <div className="myTextBox">
+            <Button type="submit" label={"Registrati"} />
+          </div>
         </div>  
       </Form>
     </Formik>

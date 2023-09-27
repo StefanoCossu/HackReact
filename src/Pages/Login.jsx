@@ -70,7 +70,7 @@ export default function Login() {
             />
           </div>
 
-          <div className="w-full text-center">
+          <div className="w-full text-center myTextBox">
             <Button type="submit" label="Login now" />
           </div>
         </Form>

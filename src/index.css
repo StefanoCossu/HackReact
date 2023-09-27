@@ -95,6 +95,86 @@ body{
   transition: 1s;
 }
 
-.shadow{
+.myShadow{
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
+.myTextBox :first-child{
+  transition: 1s;
+}
+
+.myTend{
+  z-index: 20;
+}
+.myTendR{
+  background-image: url("./assets/image/videogameimage.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.myTend:hover .myTendL{
+animation-name: moveLeft;
+animation-duration: 2s;
+animation-fill-mode: forwards;
+}
+.myTend:hover .myTendR{
+animation: moveRight 2s forwards;
+}
+@keyframes moveLeft {
+from{}
+to{left: -2000px;
+  display: none;}
+}
+@keyframes moveRight {
+0%{}
+100%{right: -2000px;
+display: none;}
+}
+
+.myTextBox::before, .myTextBox::after{
+  opacity: 0;
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+    #0000ff, #00ff00,#ffff00, #ff0000);
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 1;
+  transition: 1s; 
+  animation: steam 20s linear infinite;
+  
+}
+/* .myTextBox:hover .myTextBox::before, .myTextBox::after{
+  opacity: 1;
+} */
+.myTextBox:hover :first-child{
+  opacity: 1;
+  transition: 1s;
+  transform: scale(1.2);
+} 
+.myTextBox:hover::after , .myTextBox:hover::before {
+ opacity: 1;
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+    z-index: -1;
+  }
+  50% {
+    background-position: 400% 0;
+    z-index: -1;
+  }
+  100% {
+    background-position: 0 0;
+    z-index: -1;
+  }
+}
+
+.myTextBox:after{
+  filter: blur(50px);
+  z-index: -1;
 }
