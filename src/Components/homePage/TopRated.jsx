@@ -6,7 +6,7 @@ export default function TopRated(){
 const [games,setGames]=useState()
 const [active,setActive]=useState()
 const [scrollTop, setScrollTop] = useState(0);
-const [is_viewed,setIs_viewed] = useState([])
+const [is_viewed,setIs_viewed] = useState()
 useEffect(() => {
     const handleScroll = (event) => {
       setScrollTop(window.scrollY);
@@ -21,19 +21,13 @@ useEffect(() => {
   }, []);
 
 useEffect(()=>{
-    if (scrollTop >= 200) {
-        if (!Array.prototype.includes.call(is_viewed, 1)) setIs_viewed((prev)=> [...prev,1])
-        
-     }
+   
     if (scrollTop >= 500) {
-       if (!Array.prototype.includes.call(is_viewed, 2)) setIs_viewed((prev)=> [...prev,2])
-       
+      setIs_viewed(true)
     }
-   if(is_viewed) console.log( typeof is_viewed , is_viewed);
+
 },[scrollTop])
 
-  
-  console.log(scrollTop);
 const date = new Date()
 let day = date.getDate();
 if(day < 10) day = `0${day}`;
@@ -52,6 +46,7 @@ let monthstart = newDate.getMonth() +1 ;
 if(monthstart < 10 ) monthstart =`0${monthstart}`;
 let yearstart = date.getFullYear();
 const start = `${yearstart}-${monthstart}-01`
+
 useEffect(()=>{
     fetch(
         `${import.meta.env.VITE_RAWG_API_URL}/games?key=${
@@ -65,7 +60,7 @@ useEffect(()=>{
 },[])
 
 return(
-<div  className={`hidden md:flex ${ Array.prototype.includes.call(is_viewed, 1) ? "closeRight" : "opacity-0"}  relative w-100 p-10  flex-col h-fit mx-10 mt-[100px] myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] `}>
+<div  className={`hidden md:flex ${ is_viewed ? "sectionRight" : "opacity-0"}  relative w-100 p-10  flex-col h-fit mx-10 mt-[100px] myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] `}>
     <h3 className="w-full mb-6 text-center font-semibold font-title text-4xl px-5 bg-gradient-to-r from-[#00BECC] from-40% via-90%  via-[#b094d3] to-[#b499d4] text-transparent  bg-clip-text">I giochi più di successo del trimestre</h3>
     <div className="w-100 flex h-fit overflow-hidden">
     {games && games.results.map((game,i) =>{

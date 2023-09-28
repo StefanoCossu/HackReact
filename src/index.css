@@ -204,30 +204,60 @@ to{left: -1100px;
 }
 
 .best0{
-  animation: moveBest0 2s forwards;
+  animation: moveBest0 4s forwards;
 }
 @keyframes moveBest0{
-  from{right:-30vw;}
-  to{right:0;}
+  0%{right:-30vw;}
+  55%{right:-30vw;}
+  100%{right:0;}
 }
 .best1{
-  animation: moveBest1 2s forwards;
+  animation: moveBest1 4s forwards;
 }
 @keyframes moveBest1{
-  from{right:-15vw;}
-  to{right:0;}
+  0%{right:-15vw;}
+  55%{right:-15vw;}
+  100%{right:0;}
 }
 .best2{
-  animation: moveBest2 2s forwards;
+  animation: moveBest2 4s forwards;
 }
 @keyframes moveBest2{
-  from{right:15vw;}
-  to{right:0;}
+  0%{right:15vw;}
+  55%{right:15vw;}
+  100%{right:0;}
 }
 .best3{
-  animation: moveBest3 2s forwards;
+  animation: moveBest3 4s forwards;
 }
 @keyframes moveBest3{
-  from{right:30vw;}
-  to{right:0;}
+  0%{right:30vw;}
+  55%{right:30vw;}
+  100%{right:0;}
 }
+.sectionRight{
+  animation-name: closeSR;
+  animation-duration: 2s;
+  animation-fill-mode:forwards;
+}
+
+@keyframes closeSR{
+  from{right: -1500px;
+    opacity: 1;}
+  to{right: 0;
+  opacity: 1;}
+};
+
+.sectionLeft{
+  animation-name: closeSL;
+  animation-duration: 2s;
+  animation-fill-mode:forwards;
+}
+
+@keyframes closeSL{
+  from{left: -1500px;
+    opacity: 1;}
+  to{left: 0;
+  opacity: 1;}
+};
+

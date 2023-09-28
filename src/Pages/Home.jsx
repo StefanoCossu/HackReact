@@ -5,12 +5,36 @@ import Prefered from "../Components/homePage/Prefered";
 import HeaderBackground from "../Components/homePage/HeaderBackground";
 import NotLogged from "../Components/homePage/NotLogged";
 import TopRated from "../Components/homePage/TopRated";
+import { useEffect, useState } from "react";
 
 
 
 export default function Home() {
   const profile =  useAuthStore((state) => state.profile);
   const {t} = useTranslation();
+  const [scrollTop, setScrollTop] = useState(0);
+  const [is_viewed,setIs_viewed] = useState()
+
+  useEffect(() => {
+      const handleScroll = (event) => {
+        setScrollTop(window.scrollY);
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+      
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+      
+    }, []);
+  
+    useEffect(()=>{
+ 
+      if (scrollTop >= 100) {
+        setIs_viewed(true)
+      }
+  
+  },[scrollTop])
 
   return (
     <>
@@ -24,7 +48,7 @@ export default function Home() {
         </div>
       </div>
       
-     <div className="myShadow mt-5 pb-5 mx-10 bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3]">
+     <div className={`${ is_viewed ? "sectionLeft" : "opacity-0"} relative myShadow mt-5 pb-5 mx-10 bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3]`}>
      {profile && 
       <>
       <div>

@@ -3,12 +3,13 @@ import { useTranslation } from "react-i18next";
 import Carousel from "../uI/Carousel";
 import { Link } from "react-router-dom";
 import Button from "../uI/Button";
-
+import { useEffect, useState } from "react";
 export default function Prefered(){
     const profile =  useAuthStore((state) => state.profile);
     const {t} = useTranslation();
 
-    return <><div className="mx-10 pt-5 pb-5 my-10 myShadow">
+
+    return <><div className={`mx-10 pt-5 pb-5 my-10 myShadow relative`}>
     {profile.favorites.length > 0 && 
     <Carousel slide={profile.favorites} />
     }
