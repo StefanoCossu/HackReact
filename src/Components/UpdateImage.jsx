@@ -5,13 +5,13 @@ import useAuthStore from "../store/authStore"
 
 
 export default function UpdateImage(){
-    const profile = useAuthStore((state) => state.profile)  
+    let profile = useAuthStore((state) => state.profile)  
     const setProfile = useAuthStore((state) => state.setProfile);
     const [preview,setPreview] = useState()
     const [uploading, setUploading] = useState(false)
     const [file, setFile] = useState();
 
-    
+   
 
       useEffect(()=>{
         if(!file){
@@ -72,6 +72,7 @@ export default function UpdateImage(){
           setFile(() => null);
           setPreview(() => null);
         }
+       
       };
     return (<div>
         

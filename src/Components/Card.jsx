@@ -4,16 +4,20 @@ export default function Card({game}){
 
     const profile = useAuthStore((state) => state.profile)
     const is_Favorite = () => {
+        if(profile.favorites)
        return profile.favorites.find(el => el.game_id === game.id) 
-    }
-    
-    
+    }    
     
     return<Link to={`/game/${game.id}`}> 
     <div className="mb-5 mx-1 justify-center text-white bg-secondary">
         <p className="h-10 mb-5 mt-5 ms-1">{game.name}</p> 
         <div className="overflow-hidden">
+        { game.background_image ? 
         <img src={game.background_image} className="card w-full object-cover h-40 mb-2" alt={game.name} />
+        :
+        <p className="h-40 text-center mb-2">{game.name}</p>
+        }
+        
         </div>
         {profile && <div className="flex justify-center">
             {<svg className={is_Favorite() ? "fill-red-500 stroke-red-500 dark:stroke-red-500 dark:fill-red-500" : "hidden"} strokeWidth={1.5}

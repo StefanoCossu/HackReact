@@ -20,7 +20,6 @@ const useAuthStore = create((set)=> ({
         .eq("id", session.user.id)
         .single();
 
-        // console.log(data);
         if(data.banned_until) return;
         set((state) => ({
             ...state,
@@ -30,10 +29,26 @@ const useAuthStore = create((set)=> ({
             isAdmin: session.user.app_metadata.claims_admin,
         }));
     },
-    setProfile: async (profile) => set((state) =>({
+    setProfile: async (profile) => {set((state) =>({
         ...state,
        profile,
-    })),
+    }
+    ))
+    const {data} = await supabase
+        .from("profiles")
+        .select(`
+        *,
+        favorites (*)
+        `)
+        .eq("id", profile.id)
+        .single();
+        set((state) => ({
+            ...state,
+            profile: data,
+        }));
+   
+    },
+
     setLoggedOut: () =>
     set(()=> ({
         ...initialState,

@@ -73,7 +73,7 @@ body{
   position: center;
   height: 600px;
   object-fit: fill;
-  transition: 1s;
+  transition: 2s;
 }
 
 .etiquette{
@@ -84,15 +84,15 @@ body{
 }
 .swiper-slideImg:hover{
   transform: scale(1.2);
-  transition: 1s;
+  transition: 2s;
 }
 
 .card{
-  transition: 1s;
+  transition: 2s;
 }
 .card:hover{
   transform: scale(1.2);
-  transition: 1s;
+  transition: 2s;
 }
 
 .myShadow{
@@ -237,12 +237,12 @@ to{left: -1100px;
 }
 .sectionRight{
   animation-name: closeSR;
-  animation-duration: 2s;
+  animation-duration: 3.5s;
   animation-fill-mode:forwards;
 }
 
 @keyframes closeSR{
-  from{right: -1500px;
+  from{right: -2500px;
     opacity: 1;}
   to{right: 0;
   opacity: 1;}
@@ -250,12 +250,12 @@ to{left: -1100px;
 
 .sectionLeft{
   animation-name: closeSL;
-  animation-duration: 2s;
+  animation-duration: 3.5s;
   animation-fill-mode:forwards;
 }
 
 @keyframes closeSL{
-  from{left: -1500px;
+  from{left: -2500px;
     opacity: 1;}
   to{left: 0;
   opacity: 1;}
