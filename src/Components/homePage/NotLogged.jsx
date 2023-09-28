@@ -7,6 +7,7 @@ export default function NotLogged(){
 const [close,setClose]=useState(false)
 const [used, setUsed]=useState(false)
 
+
 const closer = (aff)=>{
         if (aff==="y") {
             setClose(true)

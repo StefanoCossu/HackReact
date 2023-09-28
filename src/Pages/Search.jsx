@@ -18,11 +18,15 @@ export default function Search() {
   const { genres, stores } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [num,setNum] = useState(0)
+  const [num,setNum] = useState(1)
 
   const [games, setGames] = useState(null);
   const [searched, setSearched] = useState("");
 
+  const searching =(v)=>{
+    setSearched(v)
+    setNum(1)
+  }
   useEffect(() => {
 
     const qs = [...searchParams].map((el) => `&${el[0]}=${el[1]}`).join("");
@@ -30,7 +34,7 @@ export default function Search() {
     fetch(
       `${import.meta.env.VITE_RAWG_API_URL}/games?&key=${
         import.meta.env.VITE_RAWG_API_KEY
-      }&page_size=${page_size}&search_precise=true&ordering=-rating${qs}`,
+      }&page_size=${page_size}&search_exact=true&ordering=-metacritic${qs}`,
     )
       .then((r) => r.json())
       .then((r) => {
@@ -42,7 +46,7 @@ export default function Search() {
 
   const handlePage = (order) => {
     const allParams = Object.fromEntries([...searchParams]);
-    setNum(allParams.page)
+    setNum(1)
 
     if (order === "next") {
       setSearchParams({
@@ -93,7 +97,7 @@ export default function Search() {
         <input
           type="search"
           value={searched}
-          onChange={(e) => setSearched(e.target.value)}
+          onChange={(e) => searching(e.target.value)}
         />
         <div className="flex justify-center mt-3">
         <Button onClick={handleSearched} label={"Cerca"} type={"button"} />
@@ -114,7 +118,8 @@ export default function Search() {
         />
       </div>
       <div className="w-4/5">
-        {games && (
+        {games && games.results.length > 0 && (
+          
           <>
             <div className="grid grid-cols-4 grid-rows-3 gap-4">
               {games.results.map((game) => (
@@ -132,16 +137,21 @@ export default function Search() {
             </div>
               <div className="">{searchParams.get("page")}</div>
             <div>
-            { !(num == games.count / page_size) &&  <Button onClick={() => handlePage("next")} label={<Next />} type={"button"}/>}
+            { (num != 833 && num != Math.ceil(games.count / page_size)) &&  <Button onClick={() => handlePage("next")} label={<Next />} type={"button"}/>}
             </div>
             <div>
-            { !(num == games.count / page_size) &&  <Button onClick={() => handlePage("end")} label={<End />} type={"button"}/>}
+            { (num != 833 && num != Math.ceil(games.count / page_size)) &&  <Button onClick={() => handlePage("end")} label={<End />} type={"button"}/>}
             </div>
             
           </div>
             }
             
           </>
+        )}
+        {games && games.results.length === 0 && (
+          <div className="h-full flex justify-center items-center">
+            <h3>Non ci sono giochi corrispondenti</h3>
+          </div>
         )}
       </div>
     </div>

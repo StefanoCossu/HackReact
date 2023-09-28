@@ -35,7 +35,7 @@ export default function Carousel({slide}){
       return  (
       <SwiperSlide className="swiper-slide relative overflow-hidden" key={index}>
         <Link to={`/game/${el.game_id}`}>
-        <p className='etiquette absolute z-10 bottom-4 left-6 border-2 px-2 dark:bg- text-white bg-[#6a93cb] border-[#14496c] dark:bg-[#14496cb3]'>{el.game_name}</p>
+        <p className='etiquette absolute z-10 bottom-4 left-6 border-2 px-2 text-white bg-[#6a93cb] border-[#14496c] dark:bg-[#14496cb3]'>{el.game_name}</p>
         <img src={el.game_image} className="swiper-slideImg w-[90vw]" alt={el.game_name} />
         </Link>   
         </SwiperSlide>)

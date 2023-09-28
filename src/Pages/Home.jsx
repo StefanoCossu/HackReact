@@ -4,13 +4,14 @@ import useAuthStore from "../store/authStore";
 import Prefered from "../Components/homePage/Prefered";
 import HeaderBackground from "../Components/homePage/HeaderBackground";
 import NotLogged from "../Components/homePage/NotLogged";
+import TopRated from "../Components/homePage/TopRated";
 
 
 
 export default function Home() {
   const profile =  useAuthStore((state) => state.profile);
   const {t} = useTranslation();
- 
+
   return (
     <>
     <Helmet>
@@ -38,6 +39,7 @@ export default function Home() {
         <NotLogged/>
       }
     </div>
+    <TopRated/>
     </div> 
     </>
   );

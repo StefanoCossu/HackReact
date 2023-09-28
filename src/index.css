@@ -143,12 +143,12 @@ to{left: -1100px;
   animation-fill-mode:forwards;
 }
 
-@keyframes closeR{
-  from{right: -1100px;
+  @keyframes closeR{
+    from{right: -1100px;
+      opacity: 1;}
+    to{right: 0;
     opacity: 1;}
-  to{right: 0;
-  opacity: 1;}
-  }
+    };
 
   .closeLeft{
     animation-name: closeL;
@@ -203,3 +203,31 @@ to{left: -1100px;
   filter: blur(50px);
 }
 
+.best0{
+  animation: moveBest0 2s forwards;
+}
+@keyframes moveBest0{
+  from{right:-30vw;}
+  to{right:0;}
+}
+.best1{
+  animation: moveBest1 2s forwards;
+}
+@keyframes moveBest1{
+  from{right:-15vw;}
+  to{right:0;}
+}
+.best2{
+  animation: moveBest2 2s forwards;
+}
+@keyframes moveBest2{
+  from{right:15vw;}
+  to{right:0;}
+}
+.best3{
+  animation: moveBest3 2s forwards;
+}
+@keyframes moveBest3{
+  from{right:30vw;}
+  to{right:0;}
+}
