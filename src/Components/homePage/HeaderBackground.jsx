@@ -7,7 +7,10 @@ export default function HeaderBackground(){
     const [grid, setGrid] = useState()
     const cols = w > 1024 ? 77 : w > 768 ? 36 : 14
     const rows = w > 1024 ? 20 : w > 768 ? 22 : 15    
-
+    const [load, setLoad] = useState("")
+    let counter = 0
+    const cycles = 150
+    
     const positions = [
         [0,1],
         [0,-1],
@@ -18,6 +21,7 @@ export default function HeaderBackground(){
         [1,0],
         [-1,0],
     ]
+
     const randomGrid = () =>{
         const grid = []
         for(let i = 0; i < rows; i++){
@@ -30,40 +34,45 @@ export default function HeaderBackground(){
         return grid
     }
     const runSimulation = ()=>{
-        setGrid((g) => {
-            const next = g.map((row,i)=>{
-                return row.map((cell,j)=>{
-                    let sum = 0
-                    positions.forEach((position)=>{
-                        const x = i + position[0]
-                        const y = j + position[1]
-                        if(x >= 0 && x < rows && y >= 0 && y < cols){
-                            sum += g[x][y]
+      setInterval(()=>{
+        if (counter >= cycles) return 
+            setGrid((g) => {
+                if (counter == cycles) return g
+                counter++
+                const next = g.map((row,i)=>{
+                    return row.map((cell,j)=>{
+                        let sum = 0
+                        positions.forEach((position)=>{
+                            const x = i + position[0]
+                            const y = j + position[1]
+                            if(x >= 0 && x < rows && y >= 0 && y < cols){
+                                sum += g[x][y]
+                            }
+                        }) 
+                        if(sum < 2 || sum >3){
+                            return 0
                         }
-                    }) 
-                    if(sum < 2 || sum >3){
-                        return 0
-                    }
-                    if (sum === 3) {
-                        return 1
-                    }
-                    return g[i][j]               
+                        if (sum === 3) {
+                            return 1
+                        }
+                        return g[i][j]               
+                    })
                 })
+                return next   
             })
-            return next
-        })
+        }, 800)
     }
-    
+
     useEffect(()=>{
     setGrid(randomGrid()) 
-          
+    setTimeout(()=>{
+        setLoad(true)
+    },200)
     },[w])
 
    useEffect(()=>{
-        setInterval(()=>{
-            runSimulation(grid)
-        }, 2000)
-    },[grid])
+        runSimulation()
+    },[load])
 
     return(
         <div className="flex justify-center w-full mb-20 md:mb-20 lg:mb-0">
