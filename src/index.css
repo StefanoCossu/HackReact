@@ -111,7 +111,7 @@ body{
 .myTend{
   z-index: 20;
 }
-.myTendR{
+.myTendRx{
   background-image: url("./assets/image/videogameimage.jpg");
   background-size: cover;
   background-position: center;
@@ -125,15 +125,43 @@ animation-fill-mode: forwards;
 animation: moveRight 2s forwards;
 }
 @keyframes moveLeft {
-from{}
-to{left: -2000px;
-  display: none;}
+from{opacity: 1;}
+to{left: -1100px;
+  opacity: 1;
+}
 }
 @keyframes moveRight {
-0%{}
-100%{right: -2000px;
-display: none;}
+0%{opacity: 1;}
+100%{right: -1100px;
+  opacity: 1;
 }
+}
+
+.closeRight{
+  animation-name: closeR;
+  animation-duration: 2s;
+  animation-fill-mode:forwards;
+}
+
+@keyframes closeR{
+  from{right: -1100px;
+    opacity: 1;}
+  to{right: 0;
+  opacity: 1;}
+  }
+
+  .closeLeft{
+    animation-name: closeL;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  }
+  @keyframes closeL{
+    from{left: -1100px;
+      opacity: 1;}
+    to{right: 0;
+      opacity: 1;}
+    }
+
 
 .myBox::before, .myBox::after{
   opacity: 0;
@@ -174,3 +202,4 @@ display: none;}
 .myBox:after{
   filter: blur(50px);
 }
+

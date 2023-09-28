@@ -6,9 +6,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import 'swiper/css/effect-fade';
 import { FreeMode, Navigation, Thumbs, Autoplay} from 'swiper/modules';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 export default function Carousel({slide}){
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [check,setCheck] = useState()
+  useEffect(()=>{
+    slide.length >= 4 ? setCheck(true) : setCheck(false)
+  },[])
+  
   return (
     <>
     <div className=" overflow-hidden">
@@ -50,7 +55,7 @@ export default function Carousel({slide}){
         modules={[FreeMode, Navigation, Thumbs, ]}
         className="mySwiper"
       >
-        {slide.map( (el,index) => {
+        {check &&  slide.map( (el,index) => {
       return  (<SwiperSlide className="swiper-Minislide" key={index} >
         <img className="" src={el.game_image}  alt={el.game_name} /> 
         </SwiperSlide>)
