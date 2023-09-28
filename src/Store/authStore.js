@@ -29,12 +29,8 @@ const useAuthStore = create((set)=> ({
             isAdmin: session.user.app_metadata.claims_admin,
         }));
     },
-    setProfile: async (profile) => {set((state) =>({
-        ...state,
-       profile,
-    }
-    ))
-    const {data} = await supabase
+    setProfile: async (profile) => {
+        const {data} = await supabase
         .from("profiles")
         .select(`
         *,
@@ -42,12 +38,10 @@ const useAuthStore = create((set)=> ({
         `)
         .eq("id", profile.id)
         .single();
-        set((state) => ({
-            ...state,
-            profile: data,
-        }));
-   
-    },
+        set((state) =>({
+        ...state,
+       profile:data
+    }))},
 
     setLoggedOut: () =>
     set(()=> ({
