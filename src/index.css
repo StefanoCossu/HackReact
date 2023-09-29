@@ -18,6 +18,7 @@ body{
   background: linear-gradient(315deg, #6a93cb 0%, #a4bfef 74%);
   overflow-x: hidden;
   /* background: linear-gradient(to right, #00BECC,#6375D9 400px,#7E2FE0 80%); */
+
 }
 :root {
   font-family: "Roboto", sans-serif;
@@ -260,4 +261,122 @@ to{left: -1100px;
   to{left: 0;
   opacity: 1;}
 };
+
+
+.minip .mg {
+  grid-template-columns: 250px 50px;
+  grid-template-rows: 100px 150px;
+  grid-template-areas: 
+    'clr group'
+    'clr .....';
+  transition:
+    grid-template-columns .6s linear,
+    grid-template-rows .6s linear;
+}
+.minip:hover .mg {
+  grid-template-columns: 150px 150px;
+  grid-template-rows: 50px 300px;
+  transition:
+    grid-template-columns .6s linear,
+    grid-template-rows .6s linear;
+}
+.minip .mg .clr {
+  grid-area: clr;
+
+}
+.minip .mg .group {
+  font: 10px/10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  writing-mode: vertical-lr;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.minip .mg .group span {
+  display: block;
+  transform: rotate(180deg);
+  z-index: 10;
+  transition:
+    transform .6s linear;
+}
+.minip:hover .mg .group span {
+  transform: rotate(270deg);
+  padding: 10px 5px 10px 5px;
+  z-index: 10;
+  transition:
+    transform .6s linear;
+}
+
+.minip .av {
+  width: 200px;
+  height: 350px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-position: top center;
+  background-size: cover;
+  transition:
+    width .6s linear,
+    height .6s linear;
+}
+.minip:hover .av {
+  width: 250px;
+  height: 400px;
+  transition:
+    width .6s linear,
+    height .6s linear;
+}
+
+.minip .info {
+  width: 160px;
+  padding: 25px;
+  position: absolute;
+  bottom: 100px;
+  left: 0px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: flex-start;
+  transition: 
+    bottom .6s linear;
+}
+.minip:hover .info {
+  bottom: 50px;
+  transition:
+    bottom .6s linear;
+}
+.minip .info .name {
+  display: block;
+  font: light 20px;
+  letter-spacing: 1px;
+  margin: 0px 0px 10px 15px;
+}
+.minip .info .deets {
+  font: 10px/15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.minip a.plot {
+  width: 110px;
+  height: 30px;
+  position: absolute;
+  bottom: 85px;
+  left: 85px;
+  font: 10px/10px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 
+    bottom .6s linear;
+}
+.minip:hover a.plot {
+  bottom: 35px;
+  transition: 
+    bottom .6s linear;
+}
 

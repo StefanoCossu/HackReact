@@ -82,10 +82,10 @@ export default function HeaderBackground(){
                 <div key={`${i}/${k}/$`} className={`w-[20px] h-[20px] ${grid[i][k] ? "bg-green-200 dark:bg-cyan-600" : ""}  border-[1px] border-grey-500 dark:border-gray-800` }></div>
             )))}
             <div className="w-full absolute md:top-20">
-            <h1 className="text-center bg-gradient-to-r from-[#00BECC] from-98% via-98%  via-[#541c97] to-[#541c97]  bg-clip-text text-4xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text-10xl  md:text-8xl font-title py-12">
+            <h1 className="lg:tracking-wide text-center bg-gradient-to-r from-[#00BECC] from-98% via-98%  via-[#541c97] to-[#541c97]  bg-clip-text text-4xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text-10xl  md:text-8xl font-title py-12">
           {t("home.title")} {import.meta.env.VITE_PROJECT_NAME}
           </h1>
-          <h2 className="text-center bg-gradient-to-r from-[#00BECC] to-98% via-[#7E2FE0] bg-clip-text text-3xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text-6xl md:text-4xl font-title pb-12">
+          <h2 className="lg:tracking-wide text-center bg-gradient-to-r from-[#00BECC] to-98% via-[#7E2FE0] bg-clip-text text-3xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text-6xl md:text-4xl font-title pb-12">
             {t("home.subtitle")}
           </h2>
             </div>

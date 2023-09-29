@@ -65,9 +65,9 @@ return(
     <div className="w-100 flex h-fit overflow-hidden">
     {games && games.results.map((game,i) =>{
         return (    
-            <div className={`w-1/4 -skew-x-12 transition-[2s] relative ${active == i ? "opacity-100":"opacity-60"} ${i==3 ? "mr-7" :""} ${i==0 ? "ml-7" :""} best${i}`} onMouseOver={()=>{setActive(i)}} onMouseOut={()=>{setActive(null)}} key={game.id}>
+            <div className={`w-1/4 -skew-x-12 overflow-hidden relative  ${i==3 ? "mr-7" :""} ${i==0 ? "ml-7" :""} best${i}`} onMouseOver={()=>{setActive(i)}} onMouseOut={()=>{setActive(null)}} key={game.id}>
                 <Link to={`/game/${game.id}`}>
-                <img src={game.background_image} alt={game.name} />
+                <img src={game.background_image} alt={game.name} className={` transition duration-[2s] ${active == i ? "opacity-100 scale-125 ":"opacity-60"}`}/>
                 </Link>
                 <p className={`absolute bottom-4 left-6 border-2 px-2 text-white bg-[#6a93cb] border-[#14496c] dark:bg-[#14496cb3] ${active== i ? "block":"hidden"}`}>{game.name}</p>
             </div>)

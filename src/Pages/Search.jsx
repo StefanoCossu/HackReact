@@ -42,7 +42,7 @@ export default function Search() {
       });
   }, [searchParams]);
 
-  const page_size = 12;
+  const page_size = 8;
 
   const handlePage = (order) => {
     const allParams = Object.fromEntries([...searchParams]);
@@ -56,8 +56,8 @@ export default function Search() {
       setNum(num+1);
     }else if (order === "end") {
       let end = Math.ceil(games.count/page_size )
-      if (end > 833) {
-        end = 833
+      if (end > 1250) {
+        end = 1250
       }
         setSearchParams({
           ...allParams,
@@ -121,13 +121,13 @@ export default function Search() {
         {games && games.results.length > 0 && (
           
           <>
-            <div className="grid grid-cols-4 grid-rows-3 gap-4">
+            <div className="grid grid-cols-4 grid-rows-2 gap-4">
               {games.results.map((game) => (
                 <Card key={game.id} game={game} />
               ))}
             </div>
             {num > 0 &&
-            <div className="mb-12 flex w-full justify-evenly">
+            <div className="mb-12 flex w-full justify-evenly mt-10">
             <div>
             {num > 1 && 
             <Button onClick={() => handlePage("start")} label={<Init />} type={"button"}/>}
@@ -137,10 +137,10 @@ export default function Search() {
             </div>
               <div className="">{searchParams.get("page")}</div>
             <div>
-            { (num != 833 && num != Math.ceil(games.count / page_size)) &&  <Button onClick={() => handlePage("next")} label={<Next />} type={"button"}/>}
+            { (num != 1250 && num != Math.ceil(games.count / page_size)) &&  <Button onClick={() => handlePage("next")} label={<Next />} type={"button"}/>}
             </div>
             <div>
-            { (num != 833 && num != Math.ceil(games.count / page_size)) &&  <Button onClick={() => handlePage("end")} label={<End />} type={"button"}/>}
+            { (num != 1250 && num != Math.ceil(games.count / page_size)) &&  <Button onClick={() => handlePage("end")} label={<End />} type={"button"}/>}
             </div>
             
           </div>
