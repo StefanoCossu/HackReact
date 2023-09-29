@@ -60,12 +60,12 @@ useEffect(()=>{
 },[])
 
 return(
-<div  className={`hidden md:flex ${ is_viewed ? "sectionRight" : "opacity-0"}  relative w-100 p-10  flex-col h-fit mx-10 mt-[100px] myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] `}>
+<div  className={`hidden md:flex  ${ is_viewed ? "sectionRight" : "opacity-0"}  relative w-100 p-10  flex-col h-fit mx-10 mt-[100px] myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] `}>
     <h3 className="w-full mb-6 text-center font-semibold font-title text-4xl px-5 bg-gradient-to-r from-[#00BECC] from-40% via-90%  via-[#b094d3] to-[#b499d4] text-transparent  bg-clip-text">I giochi più di successo del trimestre</h3>
     <div className="w-100 flex h-fit overflow-hidden">
     {games && games.results.map((game,i) =>{
         return (    
-            <div className={`w-1/4 -skew-x-12 overflow-hidden relative  ${i==3 ? "mr-7" :""} ${i==0 ? "ml-7" :""} best${i}`} onMouseOver={()=>{setActive(i)}} onMouseOut={()=>{setActive(null)}} key={game.id}>
+            <div className={`w-1/4 -skew-x-12 overflow-hidden relative ${is_viewed ? "d-block":"hidden"}  ${i==3 ? "mr-7" :""} ${i==0 ? "ml-7" :""} best${i}`} onMouseOver={()=>{setActive(i)}} onMouseOut={()=>{setActive(null)}} key={game.id}>
                 <Link to={`/game/${game.id}`}>
                 <img src={game.background_image} alt={game.name} className={` transition duration-[2s] ${active == i ? "opacity-100 scale-125 ":"opacity-60"}`}/>
                 </Link>
