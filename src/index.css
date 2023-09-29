@@ -205,35 +205,35 @@ to{left: -1100px;
 }
 
 .best0{
-  animation: moveBest0 4s forwards;
+  animation: moveBest0 7s forwards;
 }
 @keyframes moveBest0{
   0%{right:-30vw;}
-  55%{right:-30vw;}
+  50%{right:-30vw;}
   100%{right:0;}
 }
 .best1{
-  animation: moveBest1 4s forwards;
+  animation: moveBest1 7s forwards;
 }
 @keyframes moveBest1{
   0%{right:-15vw;}
-  55%{right:-15vw;}
+  50%{right:-15vw;}
   100%{right:0;}
 }
 .best2{
-  animation: moveBest2 4s forwards;
+  animation: moveBest2 7s forwards;
 }
 @keyframes moveBest2{
   0%{right:15vw;}
-  55%{right:15vw;}
+  50%{right:15vw;}
   100%{right:0;}
 }
 .best3{
-  animation: moveBest3 4s forwards;
+  animation: moveBest3 7s forwards;
 }
 @keyframes moveBest3{
   0%{right:30vw;}
-  55%{right:30vw;}
+  50%{right:30vw;}
   100%{right:0;}
 }
 .sectionRight{
