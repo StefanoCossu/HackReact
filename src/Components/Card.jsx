@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import useAuthStore from "../store/authStore";
 export default function Card({game}){
     const profile = useAuthStore((state) => state.profile)
-    console.log(game);
     const is_Favorite = () => {
         if(profile && profile.favorites) return profile.favorites.find(el => el.game_id === game.id) 
         return false

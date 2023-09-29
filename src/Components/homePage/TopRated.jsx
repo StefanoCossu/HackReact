@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAuthStore from "../../store/authStore";
 
 export default function TopRated(){
+const profile =  useAuthStore((state) => state.profile);
 const [games,setGames]=useState()
 const [active,setActive]=useState()
 const [scrollTop, setScrollTop] = useState(0);
 const [is_viewed,setIs_viewed] = useState()
+console.log(scrollTop);
+console.log(profile);
 useEffect(() => {
     const handleScroll = (event) => {
       setScrollTop(window.scrollY);
@@ -21,10 +25,19 @@ useEffect(() => {
   }, []);
 
 useEffect(()=>{
-   
+   if (profile) {
     if (scrollTop >= 500) {
       setIs_viewed(true)
+      
     }
+   }else if(!profile){
+    if (scrollTop >= 200) {
+      setIs_viewed(true)
+      
+    }
+   }
+
+    
 
 },[scrollTop])
 

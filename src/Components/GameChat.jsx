@@ -7,9 +7,8 @@ import { supabase } from "../supabase/client";
 export default function GameChat({ game }) {
   const [messages, setMessages] = useState(null);
   const [message, setMessage] = useState("");
-
+  
   const profile = useAuthStore((state) => state.profile);
-
   const fetchMessages = async () => {
     const { data } = await supabase
       .from("messages")
@@ -19,7 +18,7 @@ export default function GameChat({ game }) {
       profile: profiles(id,username,avatar_url)
       `,
       )
-      .eq("game_id", game)
+      .eq("game_id", game.id)
       .order("id", { ascending: false })
       .limit(10);
 
@@ -57,7 +56,7 @@ export default function GameChat({ game }) {
     if (message.length >= 1 ) {
       await supabase
         .from("messages")
-        .insert([{ text: message, game_id: game, profile_id: profile.id }]);
+        .insert([{ text: message, game_id: game.id, profile_id: profile.id }]);
 
       await fetchMessages();
       setMessage("");

@@ -4,6 +4,7 @@ import GameChat from "../Components/GameChat";
 import { supabase } from "../supabase/client";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
+import Votes from "../Components/game_detail/Votes";
 
 export default function GameDetails() {
   const {t} = useTranslation()
@@ -12,19 +13,19 @@ export default function GameDetails() {
   const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
 
   const isFavorite = () => {
-    return profile.favorites.find((el) => +el.game_id === game.id);
+    return profile.favorites.find(el => el.game_id === game.id);
   };
 
   const toggleFavorite = async () => {
     const data = await supabase.auth.getSession();
     if (isFavorite()) {
-      const { data, error } = await supabase
+      const { info, error } = await supabase
         .from("favorites")
         .delete()
         .eq("id", isFavorite().id);
       
     } else {
-      const { data, error } = await supabase
+      const { info, error } = await supabase
         .from("favorites")
         .insert({ user_id: profile.id, game_id: game.id, game_name: game.name ,game_image:game.background_image })
         .select();
@@ -69,8 +70,9 @@ export default function GameDetails() {
           <div dangerouslySetInnerHTML={{ __html: game.description }}></div>
         </div>
 
-        <div className="w-1/2">{profile && <GameChat game={game.id} />}</div>
+        <div className="w-1/2">{profile && <GameChat game={game} />}</div>
       </div>
+      <Votes gameId={game.id}/>
     </div>
     </>
   );

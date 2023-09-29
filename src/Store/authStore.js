@@ -15,6 +15,7 @@ const useAuthStore = create((set)=> ({
         .from("profiles")
         .select(`
         *,
+        votes (*),
         favorites (*)
         `)
         .eq("id", session.user.id)
@@ -34,6 +35,7 @@ const useAuthStore = create((set)=> ({
         .from("profiles")
         .select(`
         *,
+        votes (*),
         favorites (*)
         `)
         .eq("id", profile.id)
