@@ -3,7 +3,8 @@
         "title":"Welcome to",
         "subtitle":"The players' home",
         "games":"No predered game",
-        "prefered": "Your prefered games"
+        "prefered": "Your prefered games",
+        "topRated":"The most successful games of the quarter"
     },
     "login":{
         "title": "Login Now!"

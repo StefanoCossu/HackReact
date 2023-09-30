@@ -67,7 +67,7 @@ export default function GameChat({ game }) {
     <div className="ml-auto w-96">
       <div className="pt-24">
         {messages && messages.length > 0 ? (
-          <div className="flex flex-col-reverse text-xs">
+          <div className="flex flex-col-reverse text-xs h-[300px] overflow-y-scroll pr-5 bg-slate-500 dark:bg-slate-500 dark:bg-opacity-60 dark:backdrop:blur-md bg-opacity-60  backdrop:blur">
             {messages.map((el, i) => (
               <div
                 key={i}

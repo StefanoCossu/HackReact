@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import Carousel from "../uI/Carousel";
 import { Link } from "react-router-dom";
 import Button from "../uI/Button";
-import { useEffect, useState } from "react";
 export default function Prefered(){
     const profile =  useAuthStore((state) => state.profile);
     const {t} = useTranslation();

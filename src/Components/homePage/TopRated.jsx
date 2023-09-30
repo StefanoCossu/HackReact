@@ -2,8 +2,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useAuthStore from "../../store/authStore";
+import { useTranslation } from "react-i18next";
 
 export default function TopRated(){
+const {t}= useTranslation()
 const profile =  useAuthStore((state) => state.profile);
 const [games,setGames]=useState()
 const [active,setActive]=useState()
@@ -72,8 +74,15 @@ useEffect(()=>{
 },[])
 
 return(
-<div  className={`hidden md:flex  ${ is_viewed ? "sectionRight" : "opacity-0"}  relative w-100 p-10  flex-col h-fit mx-10 mt-[100px] myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] `}>
-    <h3 className="w-full mb-6 text-center font-semibold font-title text-4xl px-5 bg-gradient-to-r from-[#00BECC] from-40% via-90%  via-[#b094d3] to-[#b499d4] text-transparent  bg-clip-text">I giochi più di successo del trimestre</h3>
+<div  className={`hidden md:flex  ${ is_viewed ? "sectionRight" : "opacity-0"}  relative w-100 px-10 pb-10 pt-5  flex-col h-fit mx-10 mt-[100px] myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] `}>
+
+    <div className="title-wrapper mb-5 grid items-center justify-end pb-4">
+          <div className="sweet-title">
+              <span className={`bottom-title before:contents-[I giochi più di successo del trimestre]  bg-gradient-to-r from-[#096067] from-98% via-98%  via-[#541c97] to-[#541c97]  bg-clip-text text-transparent`}>
+                      <h2 className="-skew-x-12">{t("home.topRated")}</h2>  
+              </span>
+            </div>
+      </div>
     <div className="w-100 flex h-fit overflow-hidden">
     {games && games.results.map((game,i) =>{
         return (    

@@ -52,9 +52,14 @@ export default function Home() {
      {profile && 
       <>
       <div>
-        <h2 className="ms-20 pt-10 bg-gradient-to-r from-[#00BECC] to-98% via-[#7E2FE0] bg-clip-text text-4xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 lg:text:5xl md:text:4xl font-title pb-2">
-          {t("home.prefered")}
-        </h2>
+
+      <div className="title-wrapper mb-5 grid items-center justify-start">
+          <div className="sweet-title">
+              <span className={`bottom-title before:contents-[{t("home.prefered")}]  bg-gradient-to-r from-[#096067] from-98% via-98%  via-[#541c97] to-[#541c97]  bg-clip-text text-transparent`}>
+                <h2 className="-skew-x-12">{t("home.prefered")}</h2> 
+              </span>
+            </div>
+      </div>
       </div>
       <Prefered/>
       </>

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,100;1,300&family=Sedgwick+Ave+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@300;700;900&display=swap");
 @import "/node_modules/flag-icons/css/flag-icons.min.css";
 @import '/node_modules/swiper/swiper.css';
 @import '/node_modules/swiper/modules/pagination.css';
@@ -26,6 +27,50 @@ body{
 .font-title {
   font-family: "Sedgwick Ave Display", cursive;
 }
+
+.bottom-title {
+  order: 3;
+  text-align: center;
+  display: block;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  margin-top: 2rem;
+  padding-left: 2rem;
+  letter-spacing: 5px;
+}
+
+.sweet-title {
+  order: 2;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(3rem, 10vw, 6rem);
+  line-height: 0.75em;
+  text-align: center;
+  text-shadow: 3px 1px 1px #4af7ff, 2px 2px 1px #165bfb, 4px 2px 1px #4af7ff,
+    3px 3px 1px #165bfb, 5px 3px 1px #4af7ff, 4px 4px 1px #165bfb,
+    6px 4px 1px #4af7ff, 5px 5px 1px #165bfb, 7px 5px 1px #4af7ff,
+    6px 6px 1px #165bfb, 8px 6px 1px #4af7ff, 7px 7px 1px #165bfb,
+    9px 7px 1px #4af7ff;
+}
+.sweet-title span {
+  display: block;
+  position: relative;
+}
+
+.sweet-title span:before {
+  position: absolute;
+  text-shadow: 2px 2px 1px #e94aa1, -1px -1px 1px #c736f9,
+    -2px 2px 1px #e94aa1, 1px -1px 1px #f736f9;
+  z-index: 1;
+}
+
+.sweet-title span:nth-child(1) {
+  padding-right: 2.25rem;
+}
+
+.sweet-title span:nth-child(2) {
+  padding-left: 2.25rem;
+}
+
 
 .swiper {
   width: 100%;
@@ -380,3 +425,50 @@ to{left: -1100px;
     bottom .6s linear;
 }
 
+
+.myStar::before, .myStar::after{
+  opacity: 0;
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: -8px;
+  background: linear-gradient(45deg, #d8f15c, #bcc50f, #e6cf4b,#ffff00, #ece109, #f0e62c, 
+    #f8f81b, #f9f923,#c8c825, #d7ce1c);
+  background-size: 800%;
+  width: calc(150% + 4px);
+  height: calc(150% + 4px);
+  z-index: 1;
+  transition: 1s; 
+  animation: starSteam 10s linear infinite;
+  
+}
+
+
+
+@keyframes starSteam {
+  0% {
+    background-position: 0 0;
+    z-index: -1;
+    opacity: 0.5;
+  }
+  25%{
+    background-position: 200% 0;
+    z-index: -1;
+    opacity: 0.3;
+  }
+  50% {
+    background-position: 400% 0;
+    z-index: -1;
+    opacity: 0.1;
+  }
+  75%{
+    background-position: 200% 0;
+    z-index: -1;
+    opacity: 0.3;
+  }
+  100% {
+    background-position: 0 0;
+    z-index: -1;
+    opacity: 0.5;
+  }
+}

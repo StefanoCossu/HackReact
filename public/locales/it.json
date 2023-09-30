@@ -3,7 +3,8 @@
         "title":"Benvenuto su",
         "subtitle":"La casa dei giocatori!",
         "games":"Nessun gioco preferito",
-        "prefered": "I tuoi giochi preferiti!"
+        "prefered": "I tuoi giochi preferiti!",
+        "topRated":"I giochi più di successo del trimestre"
     },
     "login":{
         "title": "Loggati Ora!"

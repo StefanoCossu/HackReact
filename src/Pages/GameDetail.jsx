@@ -72,7 +72,7 @@ export default function GameDetails() {
 
         <div className="w-1/2">{profile && <GameChat game={game} />}</div>
       </div>
-      <Votes gameId={game.id}/>
+      <Votes game={game}/>
     </div>
     </>
   );
