@@ -35,5 +35,12 @@
         "games":"Prefered users' games:",
         "usersList":"Users' list:",
         "welcomeUser":"Welcome back user"
+    },
+    "gameDetail":{
+        "vote1":"Poor",
+        "vote2":"Fair",
+        "vote3":"Good",
+        "vote4":"Very Good",
+        "vote5":"Excellent"
     }
 }

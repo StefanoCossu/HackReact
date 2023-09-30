@@ -9,8 +9,7 @@ const [games,setGames]=useState()
 const [active,setActive]=useState()
 const [scrollTop, setScrollTop] = useState(0);
 const [is_viewed,setIs_viewed] = useState()
-console.log(scrollTop);
-console.log(profile);
+
 useEffect(() => {
     const handleScroll = (event) => {
       setScrollTop(window.scrollY);

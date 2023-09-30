@@ -35,5 +35,12 @@
         "games":"Giochi preferiti dagli utenti:",
         "usersList":"Lista utenti:",
         "welcomeUser":"Bentornato utente"
+    },
+    "gameDetail":{
+        "vote1":"Scarso",
+        "vote2":"Mediocre",
+        "vote3":"Buono",
+        "vote4":"Molto Buono",
+        "vote5":"Eccellente"
     }
 }
