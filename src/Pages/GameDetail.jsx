@@ -56,7 +56,8 @@ export default function GameDetails() {
 
           {profile && (
             <div className="my-12">
-              <svg className={isFavorite() ? "fill-red-500 stroke-red-500 dark:stroke-red-500 dark:fill-red-500" : "fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500"} strokeWidth={1.5}
+              <svg className={isFavorite() ? "fill-red-500 stroke-red-500 dark:stroke-red-500 dark:fill-red-500" : "fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500"} 
+                  strokeWidth={1.5}
                  height="1.5em" viewBox="0 0 512 512"
                  onClick={()=>toggleFavorite()}>
                     <path

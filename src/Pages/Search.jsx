@@ -98,6 +98,7 @@ export default function Search() {
           type="search"
           value={searched}
           onChange={(e) => searching(e.target.value)}
+          className="text-black ps-1"
         />
         <div className="flex justify-center mt-3">
         <Button onClick={handleSearched} label={"Cerca"} type={"button"} />

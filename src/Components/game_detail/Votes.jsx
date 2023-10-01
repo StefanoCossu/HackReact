@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import useAuthStore from "../../store/authStore";
 import { supabase } from "../../supabase/client";
-import { ReactComponent as Star } from "../../assets/icons/star.svg";
-import { ReactComponent as HalfStar } from "../../assets/icons/halfStar.svg";
 import { useTranslation } from "react-i18next";
 import Button from "../uI/Button";
 import { Link } from "react-router-dom";
+import Star from "../../assets/icons/star";
+import HalfStar from "../../assets/icons/HalfStar";
 
 export default function Votes({game}){
 const maxVotes= [1,2,3,4,5]
@@ -19,14 +19,14 @@ const[vote,setVote]=useState(0)
 const [active,setActive]=useState()
 const {t} = useTranslation();
 
-const starSelector=(n) => {
-if (media >= n) {
-    return <Star/>
+const starSelector=(el) => {
+if (media >= el) {
+    return <Star classes={`${el <= media ? "fill-yellow-500 stroke-yellow-500 dark:stroke-yellow-500 dark:fill-yellow-500" : (media - (el-1)) > 0 ? "fill-yellow-500 stroke-yellow-500 dark:stroke-yellow-500 dark:fill-yellow-500":"fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500"}`}/>
 }
-if ((media - (n-1)) > 0) {
-    return <HalfStar/>
+if ((media - (el-1)) > 0) {
+    return <HalfStar classes={`${el <= media ? "fill-yellow-500 stroke-yellow-500 dark:stroke-yellow-500 dark:fill-yellow-500" : (media - (el-1)) > 0 ? "fill-yellow-500 stroke-yellow-500 dark:stroke-yellow-500 dark:fill-yellow-500":"fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500"}`}/>
 }
-return <Star/>
+return <Star classes={`${el <= media ? "fill-yellow-500 stroke-yellow-500 dark:stroke-yellow-500 dark:fill-yellow-500" : (media - (el-1)) > 0 ? "fill-yellow-500 stroke-yellow-500 dark:stroke-yellow-500 dark:fill-yellow-500":"fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500"}`}/>
 }
 const isVoted = () => {
     return profile.votes.find((el) => +el.game_id === game.id);
@@ -84,11 +84,10 @@ return(<div className=" rounded-lg flex justify-center items-center mt-[200px] h
         {maxVotes.map(el=>{
             return <div key={el} onClick={()=>setVote(el)} className={`cursor-pointer mx-2 relative flex items-center w-[50px] `}>  
             <div className={`w-[1.5rem] h-[1.5rem] rounded-2xl flex justify-center items-center  bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] z-[2] p-2 m-2 relative ${active ? active >= el ? " before:rounded-full after:rounded-full myStar" : "":""}`}>
-                    <span className={`rounded-2xl ${el<=vote ? "fill-yellow-400 stroke-yellow-400 dark:stroke-yellow-400 dark:fill-yellow-400" : "fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500"} ${active ? active >= el ? "  fill-yellow-300 stroke-yellow-300 dark:stroke-yellow-300 dark:fill-yellow-300" : "fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500": "fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500"}`} onMouseOver={()=>{setActive(el)}} onMouseOut={()=>{setActive(null)}}>
-                    <Star/>
-                    </span>
-                </div>
-                    
+                    <span onMouseOver={()=>{setActive(el)}} onMouseOut={()=>{setActive(null)}}>
+                    <Star classes={`rounded-2xl ${el<=vote ? "fill-yellow-400 stroke-yellow-400 dark:stroke-yellow-400 dark:fill-yellow-400" : "fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500"} ${active ? active >= el ? "  fill-yellow-300 stroke-yellow-300 dark:stroke-yellow-300 dark:fill-yellow-300" : "fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500": "fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500"}`} hover={()=>{setActive(el)}} out={()=>{setActive(null)}} />
+                    </span>    
+                </div>     
                     <div className={`${active == el ? "flex":"hidden"} absolute text-white text-center left-[-25px] bottom-[50px]`}>
                     <p className="w-[100px]">{t(`gameDetail.vote${el}`)}</p>
                     </div>
@@ -117,7 +116,7 @@ return(<div className=" rounded-lg flex justify-center items-center mt-[200px] h
             <div className="w-full flex justify-center py-[25px]">
             {maxVotes.map(el=>{
                 return <div key={el} className="mx-2">
-                        <span className={`${el <= media ? "fill-yellow-500 stroke-yellow-500 dark:stroke-yellow-500 dark:fill-yellow-500" : (media - (el-1)) > 0 ? "fill-yellow-500 stroke-yellow-500 dark:stroke-yellow-500 dark:fill-yellow-500":"fill-gray-400 stroke-gray-400 dark:stroke-gray-500 dark:fill-gray-500"}`}>
+                        <span >
                             {starSelector(el)}
                         </span>
                     </div>
@@ -125,15 +124,17 @@ return(<div className=" rounded-lg flex justify-center items-center mt-[200px] h
             </div>
             <div className="text-white text-center">Hanno votato {voters} con un media di {media}</div>     
     </div>
-    <div className={`${voters == 0 ? "":"hidden"} relative flex flex-col items-center justify-center`}>
+    {!profile &&
+        <div className={`${voters == 0 ? "":"hidden"} relative flex flex-col items-center justify-center`}>
                 
-                    <h3 className="text-center font-semibold font-title text-4xl px-5 bg-gradient-to-r from-[#00BECC] from-40% via-90%  via-[#b094d3] to-[#b499d4] text-transparent  bg-clip-text ">Nessuno ha ancora votato {game.name}.. Loggati e sii il primo!</h3>
-                    <div className="myBox before:rounded-xl after:rounded-xl bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] flex relative justify-center items-center z-[2] mt-5">
-                    <span className="">
-                        <Link to={'/login'}><Button label={t("common.login")}/></Link>
-                    </span>
-                    </div>
+        <h3 className="text-center font-semibold font-title text-4xl px-5 bg-gradient-to-r from-[#00BECC] from-40% via-90%  via-[#b094d3] to-[#b499d4] text-transparent  bg-clip-text ">Nessuno ha ancora votato {game.name}.. Loggati e sii il primo!</h3>
+        <div className="myBox before:rounded-xl after:rounded-xl bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] flex relative justify-center items-center z-[2] mt-5">
+        <span className="">
+            <Link to={'/login'}><Button label={t("common.login")}/></Link>
+        </span>
+        </div>
     </div>
+    }
     </>
 }
     </div>
