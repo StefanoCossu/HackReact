@@ -51,7 +51,7 @@ const result = async ()=>{
         .select('*')
         .eq('game_id', game.id)
         
-    setScore(Math.round((data.map(el=>{return el.vote}).reduce((a, b) => a + b, 0))*100)/100)    
+    setScore(data.map(el=>{return el.vote}).reduce((a, b) => a + b, 0))    
     setVoters(data.length)      
 }
 useEffect(()=>{
@@ -66,7 +66,7 @@ useEffect(()=>{
 },[checker])
 useEffect(()=>{
     if (voters>0) {
-    setMedia(score/voters) 
+    setMedia(Math.round(((score/voters) + Number.EPSILON)* 100)/100) 
     }
     
 },[score])
