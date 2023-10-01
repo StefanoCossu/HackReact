@@ -4,8 +4,8 @@ import { supabase } from "../../supabase/client";
 import { useTranslation } from "react-i18next";
 import Button from "../uI/Button";
 import { Link } from "react-router-dom";
-import Star from "../../assets/icons/star";
-import HalfStar from "../../assets/icons/HalfStar";
+import Star from "../Star";
+import HalfStar from "../HalfStar";
 
 export default function Votes({game}){
 const maxVotes= [1,2,3,4,5]
