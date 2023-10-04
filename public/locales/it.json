@@ -20,7 +20,8 @@
             "title":"Reack Pagina di Ricerca"
         },
         "genres":"Generi",
-        "stores":"Negozi"
+        "stores":"Negozi",
+        "searchBar":"Cerca gioco per nome"
     },
     "common":{
         "login":"Loggati",

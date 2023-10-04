@@ -94,22 +94,25 @@ export default function Search() {
     <div className="flex min-h-screen px-6 pt-14">
       <div className="flex w-1/5 flex-col">
         <div className="mb-12"></div>
+        <div className="p-5 bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] flex flex-col mb-5">
         <input
+          placeholder={t("search.searchBar")}
           type="search"
           value={searched}
           onChange={(e) => searching(e.target.value)}
           className="text-black ps-1"
-        />
+          />      
         <div className="flex justify-center mt-3">
         <Button onClick={handleSearched} label={"Cerca"} type={"button"} />
         </div>
-        
+        </div>
+        <div className="bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3] flex-col">
         <GenresList
           genres={genres}
           searchParams={searchParams}
           setSearchParams={setSearchParams}
           num={setNum}
-        />
+          />
         <hr className="my-12" />
         <StoresList
           stores={stores}
@@ -117,6 +120,9 @@ export default function Search() {
           setSearchParams={setSearchParams}
           num={setNum}
         />
+
+        </div>
+        
       </div>
       <div className="w-4/5">
         {games && games.results.length > 0 && (

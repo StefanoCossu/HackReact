@@ -14,7 +14,7 @@ export default function Root() {
       : 
         location.key;}}/>
     <Authentication>
-      <div className="text-slate-800 dark:bg-slate-900 dark:text-slate-200 min-h-screen antialiased">
+      <div className="text-cyan-500 dark:bg-slate-900 dark:text-slate-200 min-h-screen antialiased">
       <Navigation />
       <div >
         <Outlet />

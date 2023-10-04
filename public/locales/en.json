@@ -20,7 +20,8 @@
             "title":"Search Page"
         },
         "genres":"Genres",
-        "stores":"Stores"
+        "stores":"Stores",
+        "searchBar":"Search game by name"
     },
     "common":{
         "login":"Login",

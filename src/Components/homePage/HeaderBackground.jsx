@@ -75,11 +75,11 @@ export default function HeaderBackground(){
     },[load])
 
     return(
-        <div className="flex justify-center w-full mb-20 md:mb-20 lg:mb-0">
-            <div className="relative flex justify-center flex-wrap lg:w-[1558px] lg:h-[400px] md:w-[1558px] md:h-[500px] w-[460px] h-[300px] mt-20 md:mt-0 myShadow">
+        <div className="flex justify-center w-full mb-20 md:mb-20 lg:mb-0 ">
+            <div className="relative flex justify-center flex-wrap lg:w-[1558px] lg:h-[400px] md:w-[1558px] md:h-[500px] w-[460px] h-[300px] mt-20 md:mt-0 myShadow bg-gradient-to-r from-[#14496c] from-40% via-[#14496cb3] via-90% to-[#14496cb3]">
             {grid && grid.map((rows, i)=>
             rows.map((col,k)=>(
-                <div key={`${i}/${k}/$`} className={`w-[20px] h-[20px] ${grid[i][k] ? "bg-green-200 dark:bg-cyan-600" : ""}  border-[1px] border-grey-500 dark:border-gray-800` }></div>
+                <div key={`${i}/${k}/$`} className={`w-[20px] h-[20px] ${grid[i][k] ? "bg-green-200 dark:bg-cyan-600" : ""}  border-[1px] border-gray-600  dark:border-gray-800` }></div>
             )))}
             <div className="w-full absolute md:top-20">
 
