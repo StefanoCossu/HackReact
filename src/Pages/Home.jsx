@@ -6,6 +6,7 @@ import HeaderBackground from "../Components/homePage/HeaderBackground";
 import NotLogged from "../Components/homePage/NotLogged";
 import TopRated from "../Components/homePage/TopRated";
 import { useEffect, useState } from "react";
+import ParticlesCanvas from "../Components/background/ParticlesCanvas";
 
 
 
@@ -41,6 +42,7 @@ export default function Home() {
     <Helmet>
       <title>Home</title>
     </Helmet>
+    {/* <ParticlesCanvas/> */}
     <div className="py-10 mb-10">
       <div className="gap-12 px-12 py-12 md:py-24 md:flex">
         <div className="w-full">

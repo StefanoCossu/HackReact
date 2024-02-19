@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { supabase } from "../supabase/client";
 
-
 const initialState = {
     session: null,
     profile: null,
@@ -20,7 +19,6 @@ const useAuthStore = create((set)=> ({
         `)
         .eq("id", session.user.id)
         .single();
-
         if(data.banned_until) return;
         set((state) => ({
             ...state,
