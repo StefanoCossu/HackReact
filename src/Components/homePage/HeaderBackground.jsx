@@ -3,13 +3,16 @@ import { useTranslation } from "react-i18next"
 
 export default function HeaderBackground(){
     let w = window.innerWidth;
+    let h = window.innerHeight;
+    w = w == 1366 ? h == 607 ? "portable" : w : w ;
     const {t}= useTranslation()
     const [grid, setGrid] = useState()
-    const cols = w > 1024 ? 77 : w > 768 ? 36 : 14
-    const rows = w > 1024 ? 20 : w > 768 ? 22 : 15    
+    const cols = w == "portable" ? 62 : w > 1024 ? 77 : w > 768 ? 36 : 14
+    const rows = w == "portable" ? 20 : w > 1024 ? 20 : w > 768 ? 22 : 15    
     const [load, setLoad] = useState("")
     let counter = 0
     const cycles = 150
+    
     
     const positions = [
         [0,1],

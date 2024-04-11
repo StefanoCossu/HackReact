@@ -6,7 +6,7 @@ import HeaderBackground from "../Components/homePage/HeaderBackground";
 import NotLogged from "../Components/homePage/NotLogged";
 import TopRated from "../Components/homePage/TopRated";
 import { useEffect, useState } from "react";
-import ParticlesCanvas from "../Components/background/ParticlesCanvas";
+// import ParticlesCanvas from "../Components/background/ParticlesCanvas";
 
 
 
