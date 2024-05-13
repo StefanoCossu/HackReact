@@ -15,7 +15,7 @@ export default function HeaderBackground(){
     let counter = 0
     const cycles = 150
     
-    
+
     const positions = [
         [0,1],
         [0,-1],
